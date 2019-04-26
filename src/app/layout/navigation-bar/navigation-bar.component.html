@@ -1,0 +1,23 @@
+<div class="logo" [ngClass]="{'logo-inline': mode==='inline'}">
+  <a routerLink="/">
+    <img
+      src="https://camo.githubusercontent.com/9fc690426bf04fad984b5a71424ecafc02528f51/68747470733a2f2f696d672e616c6963646e2e636f6d2f7466732f544231544646614841766f4b31526a535a467758586369434658612d3130362d3132302e737667">
+    <h1>Ng Zorro Pro</h1>
+  </a>
+</div>
+<ul [class.ant-pro-menu]="mode==='inline'" nz-menu [nzTheme]="'dark'" [nzMode]="mode" [nzInlineCollapsed]="collapsed">
+  <ng-container *ngFor="let menu of menus">
+    <li nz-submenu *ngIf="menu.children && menu.children.length > 0;else menuItem">
+      <span title><i nz-icon [type]="menu.icon"></i><span class="nav-text">{{menu.name}}</span></span>
+      <ul>
+        <li *ngFor="let submenu of menu.children" nz-menu-item
+            [nzSelected]="submenu.router === selectedUrl" (click)="onGoPage(submenu)">{{submenu.name}}</li>
+      </ul>
+    </li>
+    <ng-template #menuItem>
+      <li nz-menu-item (click)="onGoPage(menu)" [nzSelected]="menu.router === selectedUrl">
+        <span><i nz-icon [type]="menu.icon"></i><span class="nav-text">{{menu.name}}</span></span>
+      </li>
+    </ng-template>
+  </ng-container>
+</ul>

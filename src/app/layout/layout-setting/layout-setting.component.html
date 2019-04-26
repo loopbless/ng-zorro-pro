@@ -1,0 +1,24 @@
+<div class="ant-pro-layout-setting"
+     [class.ant-pro-open]="visible"
+     (click)="visible=!visible">
+  <i nz-icon [type]="visible?'close':'setting'"></i>
+</div>
+<nz-drawer
+  nzWidth="300px"
+  [nzVisible]="visible"
+  nzPlacement="right"
+  nzTitle="整体风格设置"
+  (nzOnClose)="visible = false"
+>
+  <h3>导航模式</h3>
+  <section class="ant-pro-setting-item">
+    <div (click)="changeNavMode('left')">
+      <img src="https://gw.alipayobjects.com/zos/rmsportal/JopDzEhOqwOjeNTXkoje.svg" alt="">
+      <i nz-icon type="check" [hidden]="layout?.mode!=='left'"></i>
+    </div>
+    <div (click)="changeNavMode('top')">
+      <img src="https://gw.alipayobjects.com/zos/rmsportal/KDNDBbriJhLwuqMoxcAr.svg" alt="">
+      <i nz-icon type="check" [hidden]="layout?.mode!=='top'"></i>
+    </div>
+  </section>
+</nz-drawer>

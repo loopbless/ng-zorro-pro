@@ -1,0 +1,48 @@
+@import "theme";
+
+.layout{
+  height: 100%;
+}
+
+nz-sider {
+  z-index: 10;
+  box-shadow: 2px 0 6px rgba(0, 21, 41, .35);
+}
+
+nz-header nz-navigation-bar{
+  display: flex;
+  width: @screen-xl;
+  margin: 0 auto;
+}
+
+.@{ant-pro-prefix}-header {
+  padding: 0;
+  z-index: 1;
+  position: relative;
+  background-color: #fff;
+  box-shadow: 0 1px 4px rgba(0, 21, 41, .08);
+}
+
+.@{ant-pro-prefix}-top-nav{
+  display: flex;
+}
+
+.trigger {
+  font-size: 18px;
+  line-height: 64px;
+  padding: 0 24px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+::ng-deep {
+  nz-content {
+    position: relative;
+
+    .@{ant-prefix}-layout {
+      position: absolute;
+      width: 100%;
+      min-height: 100%;
+    }
+  }
+}

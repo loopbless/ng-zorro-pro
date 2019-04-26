@@ -107,6 +107,15 @@
   dependencies:
     tslib "^1.9.0"
 
+"@angular/cdk@^7.0.0":
+  version "7.3.7"
+  resolved "http://172.16.104.161:8081/repository/npm-all/@angular/cdk/-/cdk-7.3.7.tgz#ce1ad53ba04beb9c8e950acc5691ea0143753764"
+  integrity sha1-zhrVO6BL65yOlQrMVpHqAUN1N2Q=
+  dependencies:
+    tslib "^1.7.1"
+  optionalDependencies:
+    parse5 "^5.0.0"
+
 "@angular/cli@~7.3.8":
   version "7.3.8"
   resolved "http://172.16.104.161:8081/repository/npm-all/@angular/cli/-/cli-7.3.8.tgz#a0891e08bee7d68b9ef2c00a9a7e93c6c5ac75d7"
@@ -195,6 +204,19 @@
   resolved "http://172.16.104.161:8081/repository/npm-all/@angular/router/-/router-7.2.14.tgz#c8994ce10e6df3d5ada06e409a6a0b00ae9536d4"
   integrity sha1-yJlM4Q5t89WtoG5AmmoLAK6VNtQ=
   dependencies:
+    tslib "^1.9.0"
+
+"@angularclass/hmr@^2.1.3":
+  version "2.1.3"
+  resolved "http://172.16.104.161:8081/repository/npm-all/@angularclass/hmr/-/hmr-2.1.3.tgz#34e658ed3da37f23b0a200e2da5a89be92bb209f"
+  integrity sha1-NOZY7T2jfyOwogDi2lqJvpK7IJ8=
+
+"@ant-design/icons-angular@^2.0.2":
+  version "2.0.4"
+  resolved "http://172.16.104.161:8081/repository/npm-all/@ant-design/icons-angular/-/icons-angular-2.0.4.tgz#2aa72f65f9b020734dc8f363ce801c39ad0eb317"
+  integrity sha1-KqcvZfmwIHNNyPNjzoAcOa0Osxc=
+  dependencies:
+    ant-design-palettes "^1.1.3"
     tslib "^1.9.0"
 
 "@babel/code-frame@^7.0.0":
@@ -669,6 +691,13 @@ ansi-styles@^3.2.1:
   integrity sha1-QfuyAkPlCxK+DwS43tvwdSDOhB0=
   dependencies:
     color-convert "^1.9.0"
+
+ant-design-palettes@^1.1.3:
+  version "1.1.3"
+  resolved "http://172.16.104.161:8081/repository/npm-all/ant-design-palettes/-/ant-design-palettes-1.1.3.tgz#84119b1a4d86363adc52a38d587e65336a0a27dd"
+  integrity sha1-hBGbGk2GNjrcUqONWH5lM2oKJ90=
+  dependencies:
+    tinycolor2 "^1.4.1"
 
 anymatch@^2.0.0:
   version "2.0.0"
@@ -1845,6 +1874,11 @@ dashdash@^1.12.0:
   integrity sha1-hTz6D3y+L+1d4gMmuN1YEDX24vA=
   dependencies:
     assert-plus "^1.0.0"
+
+date-fns@^1.29.0:
+  version "1.30.1"
+  resolved "http://172.16.104.161:8081/repository/npm-all/date-fns/-/date-fns-1.30.1.tgz#2e71bf0b119153dbb4cc4e88d9ea5acfb50dc05c"
+  integrity sha1-LnG/CxGRU9u0zE6I2epaz7UNwFw=
 
 date-format@^2.0.0:
   version "2.0.0"
@@ -4391,6 +4425,16 @@ neo-async@^2.5.0, neo-async@^2.6.0:
   resolved "http://172.16.104.161:8081/repository/npm-all/neo-async/-/neo-async-2.6.0.tgz#b9d15e4d71c6762908654b5183ed38b753340835"
   integrity sha1-udFeTXHGdikIZUtRg+04t1M0CDU=
 
+ng-zorro-antd@^7.3.2:
+  version "7.3.2"
+  resolved "http://172.16.104.161:8081/repository/npm-all/ng-zorro-antd/-/ng-zorro-antd-7.3.2.tgz#3eb1fe75efd6b97e08ec91fd3c60a82a9df8e0fa"
+  integrity sha1-PrH+de/WuX4I7JH9PGCoKp344Po=
+  dependencies:
+    "@angular/cdk" "^7.0.0"
+    "@ant-design/icons-angular" "^2.0.2"
+    date-fns "^1.29.0"
+    tslib "^1.9.0"
+
 nice-try@^1.0.4:
   version "1.0.5"
   resolved "http://172.16.104.161:8081/repository/npm-all/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
@@ -4905,6 +4949,11 @@ parse5@4.0.0:
   version "4.0.0"
   resolved "http://172.16.104.161:8081/repository/npm-all/parse5/-/parse5-4.0.0.tgz#6d78656e3da8d78b4ec0b906f7c08ef1dfe3f608"
   integrity sha1-bXhlbj2o14tOwLkG98CO8d/j9gg=
+
+parse5@^5.0.0:
+  version "5.1.0"
+  resolved "http://172.16.104.161:8081/repository/npm-all/parse5/-/parse5-5.1.0.tgz#c59341c9723f414c452975564c7c00a68d58acd2"
+  integrity sha1-xZNByXI/QUxFKXVWTHwApo1YrNI=
 
 parseqs@0.0.5:
   version "0.0.5"
@@ -6515,6 +6564,11 @@ timers-browserify@^2.0.4:
   dependencies:
     setimmediate "^1.0.4"
 
+tinycolor2@^1.4.1:
+  version "1.4.1"
+  resolved "http://172.16.104.161:8081/repository/npm-all/tinycolor2/-/tinycolor2-1.4.1.tgz#f4fad333447bc0b07d4dc8e9209d8f39a8ac77e8"
+  integrity sha1-9PrTM0R7wLB9TcjpIJ2POaisd+g=
+
 tmp@0.0.30:
   version "0.0.30"
   resolved "http://172.16.104.161:8081/repository/npm-all/tmp/-/tmp-0.0.30.tgz#72419d4a8be7d6ce75148fd8b324e593a711c2ed"
@@ -6618,7 +6672,7 @@ ts-node@~7.0.0:
     source-map-support "^0.5.6"
     yn "^2.0.0"
 
-tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0:
+tslib@^1.7.1, tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0:
   version "1.9.3"
   resolved "http://172.16.104.161:8081/repository/npm-all/tslib/-/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
   integrity sha1-1+TdeSRdhUKMTX5IIqeZF5VMooY=

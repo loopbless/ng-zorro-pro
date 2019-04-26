@@ -1,0 +1,45 @@
+@import "theme";
+
+.logo {
+  height: 64px;
+  line-height: 64px;
+  transition: all .3s;
+  overflow: hidden;
+  width: 165px;
+  padding-left: 0;
+  &.logo-inline{
+    width: auto;
+    padding-left: 24px;
+    background-color: @layout-trigger-background;
+    h1{
+      font-size: 20px;
+      font-weight: 600;
+      vertical-align: middle;
+    }
+  }
+  img {
+    width: 32px;
+    height: 32px;
+  }
+
+  h1 {
+    color: #fff;
+    font-weight: 400;
+    font-size: 16px;
+    vertical-align: top;
+    margin: 0 0 0 12px;
+    display: inline-block;
+    font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
+  }
+}
+
+.@{ant-pro-prefix}-menu{
+  padding: 16px 0;
+}
+
+::ng-deep .@{ant-prefix}-menu-horizontal > {
+  .@{ant-prefix}-menu-submenu-horizontal,
+  .@{ant-prefix}-menu-item {
+    line-height: 64px;
+  }
+}

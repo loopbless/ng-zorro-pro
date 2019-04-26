@@ -3,15 +3,13 @@
   "rules": {
     "directive-selector": [
       true,
-      "attribute",
-      "app",
-      "camelCase"
+      "nz",
+      "pro"
     ],
     "component-selector": [
       true,
-      "element",
-      "app",
-      "kebab-case"
+      "nz",
+      "pro"
     ]
   }
 }

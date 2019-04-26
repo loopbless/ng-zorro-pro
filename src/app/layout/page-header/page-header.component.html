@@ -1,0 +1,11 @@
+<div class="ant-page-header">
+  <ng-container *ngTemplateOutlet="pageHeader"></ng-container>
+</div>
+<ng-template #pageHeader>
+  <nz-breadcrumb>
+    <nz-breadcrumb-item>首页</nz-breadcrumb-item>
+    <nz-breadcrumb-item *ngFor="let breadcrumb of breadcrumbs">{{breadcrumb.title}}</nz-breadcrumb-item>
+  </nz-breadcrumb>
+  <h4 *ngIf="title">{{title}}</h4>
+  <p *ngIf="description">{{description}}</p>
+</ng-template>
