@@ -45,8 +45,8 @@ export class MenuApi {
       },
       {
         name: '结果页', icon: 'check-circle-o', children: [
-          {name: '成功页', router: '/tree/basic'},
-          {name: '失败页', router: '/tree/advanced'},
+          {name: '成功页', router: '/result/success'},
+          {name: '失败页', router: '/result/error'},
         ]
       },
       {
@@ -66,7 +66,6 @@ export class MenuApi {
         name: '图形编辑器', icon: 'highlight', children: [
           {name: '流程编辑器', router: '/editor/flow'},
           {name: '脑图编辑器', router: '/editor/mind'},
-          {name: '拓扑编辑器', router: '/editor/topology'},
         ]
       },
     ]);

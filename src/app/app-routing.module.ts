@@ -22,6 +22,26 @@ const routes: Routes = [
         path: 'tree',
         loadChildren: './features/tree/tree.module#TreeModule'
       },
+      {
+        path: 'profile',
+        loadChildren: './features/profile/profile.module#ProfileModule'
+      },
+      {
+        path: 'result',
+        loadChildren: './features/result/result.module#ResultModule'
+      },
+      {
+        path: 'exception',
+        loadChildren: './features/exception/exception.module#ExceptionModule'
+      },
+      {
+        path: 'account',
+        loadChildren: './features/account/account.module#AccountModule'
+      },
+      {
+        path: 'editor',
+        loadChildren: './features/editor/editor.module#EditorModule'
+      },
     ]
   },
 ];

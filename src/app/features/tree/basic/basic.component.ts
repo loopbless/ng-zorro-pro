@@ -55,14 +55,11 @@ export class BasicComponent implements OnInit, OnDestroy {
   ];
 
   constructor() {
-    console.log('tree constructor');
   }
 
   ngOnInit() {
-    console.log('tree ngOnInit');
   }
 
   ngOnDestroy(): void {
-    console.log('tree ngOnDestroy');
   }
 }

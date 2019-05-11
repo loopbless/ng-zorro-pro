@@ -3,7 +3,7 @@ import { MenuApi } from '../../core/apis/menu.api';
 import { LayoutService } from '../layout.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
-import { setting } from 'src/setting';
+import { setting } from '../../../setting';
 
 export const GLOBAL_LAYOUT_ID = 'main';
 
