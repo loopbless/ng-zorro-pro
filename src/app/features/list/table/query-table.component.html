@@ -1,0 +1,106 @@
+<ant-pro-page-layout>
+  <ant-pro-page-header [breadcrumbs]="[{title: '列表'}, {title: '查询表格'}]" [title]="'查询表格'"></ant-pro-page-header>
+  <ant-pro-page-content>
+    <form nz-form [formGroup]="tableForm">
+      <div nz-row [nzGutter]="48">
+        <div nz-col nzXs="24" nzSm="12" nzMd="8">
+          <nz-form-item nzFlex>
+            <nz-form-label>规则名称</nz-form-label>
+            <nz-form-control>
+              <input nz-input placeholder="请输入" [formControlName]="'name'"/>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col nzXs="24" nzSm="12" nzMd="8">
+          <nz-form-item nzFlex>
+            <nz-form-label>使用状态</nz-form-label>
+            <nz-form-control>
+              <input nz-input placeholder="请输入" [formControlName]="'status'"/>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col nzXs="24" nzSm="12" nzMd="8" [hidden]="isCollapse">
+          <nz-form-item nzFlex>
+            <nz-form-label>调用次数</nz-form-label>
+            <nz-form-control>
+              <nz-input-number nzPlaceHolder="请输入" [formControlName]="'number'" nzStep="1"></nz-input-number>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col nzXs="24" nzSm="12" nzMd="8" [hidden]="isCollapse">
+          <nz-form-item nzFlex>
+            <nz-form-label>更新日期</nz-form-label>
+            <nz-form-control>
+              <nz-date-picker
+                nzShowTime [nzStyle]="{width: '100%'}"
+                nzFormat="yyyy-MM-dd HH:mm:ss"
+                nzPlaceHolder="请选择更新日期"
+                [formControlName]="'date'"
+              ></nz-date-picker>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col nzXs="24" nzSm="12" nzMd="8" [hidden]="isCollapse">
+          <nz-form-item nzFlex>
+            <nz-form-label>使用状态</nz-form-label>
+            <nz-form-control>
+              <input nz-input placeholder="请输入" [formControlName]="'status1'"/>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col nzXs="24" nzSm="12" nzMd="8" [hidden]="isCollapse">
+          <nz-form-item nzFlex>
+            <nz-form-label>使用状态</nz-form-label>
+            <nz-form-control>
+              <input nz-input placeholder="请输入" [formControlName]="'status2'"/>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col nzXs="24" nzSm="12" nzMd="8" class="ant-pro-table-form-buttons">
+          <nz-form-item nzFlex>
+            <nz-form-control>
+              <button nz-button [nzType]="'primary'">查 询</button>
+              <button nz-button (click)="onResetForm()">重 置</button>
+              <a (click)="isCollapse = !isCollapse">
+                {{isCollapse ? '展开' : '收起'}}
+                <i nz-icon [type]="isCollapse ? 'down' : 'up'"></i>
+              </a>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+    </form>
+
+    <button class="ant-mb-md" nz-button nzType="primary"><i nz-icon type="plus"></i>新 建</button>
+
+    <nz-alert class="ant-mb-sm" nzType="info" [nzMessage]="nzMsg" nzShowIcon="true"></nz-alert>
+    <ng-template #nzMsg>
+      已选择 <a class="ant-pro-font-strong" href="javascript:void(0)">0</a> 项  服务调用次数总计
+      <span class="ant-pro-font-strong">0万</span>
+      <a class="ant-ml-lg">清空</a>
+    </ng-template>
+
+    <nz-table #basicTable [nzData]="listOfData">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Address</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let data of basicTable.data">
+        <td>{{ data.name }}</td>
+        <td>{{ data.age }}</td>
+        <td>{{ data.address }}</td>
+        <td>
+          <a>Action 一 {{ data.name }}</a>
+          <nz-divider nzType="vertical"></nz-divider>
+          <a>Delete</a>
+        </td>
+      </tr>
+      </tbody>
+    </nz-table>
+  </ant-pro-page-content>
+</ant-pro-page-layout>

@@ -2,17 +2,21 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
+export type ProModeType = 'vertical' | 'horizontal';
+
 export interface Layout {
   collapsed?: boolean;
   layoutId: string;
-  mode?: 'left' | 'top';
+  mode?: ProModeType;
 }
 
 @Injectable()
-export class LayoutStore {
+export class LayoutService {
 
   private layout$ = new Subject<Layout>();
-  private store: Map<string, Layout>;
+  private menu$ = new Subject();
+  private menu: any;
+  private store: Map<string, Layout> = new Map<string, any>();
 
   constructor() {
   }
@@ -30,7 +34,16 @@ export class LayoutStore {
     return this.layout$.pipe(filter(layout => layout.layoutId === type));
   }
 
-  toggleCollapsed(is) {
+  actived(router: string) {
+    this.menu = router;
+    this.menu$.next(router);
+  }
 
+  isSelected(router) {
+    return this.menu === router;
+  }
+
+  routerChange() {
+    return this.menu$.asObservable();
   }
 }

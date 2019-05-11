@@ -1,14 +1,15 @@
 @import "theme";
 
 .logo {
-  height: 64px;
-  line-height: 64px;
+  height: @layout-header-height;
+  line-height: @layout-header-height;
   transition: all .3s;
   overflow: hidden;
-  width: 165px;
+  min-width: 165px;
   padding-left: 0;
   &.logo-inline{
     width: auto;
+    min-width: @layout-header-height;
     padding-left: 24px;
     background-color: @layout-trigger-background;
     h1{
@@ -35,6 +36,10 @@
 
 .@{ant-pro-prefix}-menu{
   padding: 16px 0;
+}
+
+.levels-menu{
+  flex: 1 1;
 }
 
 ::ng-deep .@{ant-prefix}-menu-horizontal > {

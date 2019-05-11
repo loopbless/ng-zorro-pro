@@ -1,0 +1,34 @@
+<ul class="ant-pro-global-header ant-pro-global-header-{{theme}}">
+  <li>
+    <span><nz-badge [nzCount]=" 5 "><i nz-icon type="bell"></i></nz-badge></span>
+  </li>
+  <li>
+    <nz-dropdown [nzOverlayStyle]="overlayStyle">
+      <span nz-dropdown><nz-avatar [nzSize]="'small'" [nzSrc]="user.avatar"></nz-avatar><span class="ant-pl-xs">hejialin</span></span>
+      <ul nz-menu>
+        <li nz-menu-item>
+          <i nz-icon type="user"></i>
+          <span>个人中心</span>
+        </li>
+        <li nz-menu-item>
+          <i nz-icon type="setting"></i>
+          <span>个人设置</span>
+        </li>
+        <li nz-menu-divider></li>
+        <li nz-menu-item>
+          <i nz-icon type="logout"></i>
+          <span>退出登录</span>
+        </li>
+      </ul>
+    </nz-dropdown>
+  </li>
+  <li>
+    <nz-dropdown [nzOverlayStyle]="overlayStyle" nzPlacement="bottomRight">
+      <span nz-dropdown><span><i nz-icon type="global"></i></span></span>
+      <ul nz-menu>
+        <li nz-menu-item>🇨🇳简体中文</li>
+        <li nz-menu-item>🇺🇸English</li>
+      </ul>
+    </nz-dropdown>
+  </li>
+</ul>

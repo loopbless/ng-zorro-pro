@@ -1,38 +1,35 @@
 import { NgModule } from '@angular/core';
 import { BasicLayoutComponent } from './basic-layout/basic-layout.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
-import { LayoutStore } from './layout.service';
+import { LayoutService } from './layout.service';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
-import { PageLayoutComponent } from './page-layout/page-layout.component';
-import { PageSiderComponent } from './page-sider/page-sider.component';
-import { PageHeaderComponent } from './page-header/page-header.component';
-import { PageContentComponent } from './page-content/page-content.component';
-import { LayoutSettingComponent } from './layout-setting/layout-setting.component';
-
-const EXPORT_COMPONENTS = [
-  PageLayoutComponent,
-  PageSiderComponent,
-  PageHeaderComponent,
-  PageContentComponent
-];
+import { SettingDrawerComponent } from './setting-drawer/setting-drawer.component';
+import { GlobalHeaderComponent } from './global-header/global-header.component';
+import { GlobalFooterComponent } from './global-footer/global-footer.component';
+import { ThemeColorComponent } from './theme-color/theme-color.component';
+import { LevelsMenuComponent } from './levels-menu/levels-menu.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [
     BasicLayoutComponent,
     NavigationBarComponent,
-    ...EXPORT_COMPONENTS,
-    LayoutSettingComponent
+    SettingDrawerComponent,
+    GlobalHeaderComponent,
+    GlobalFooterComponent,
+    ThemeColorComponent,
+    LevelsMenuComponent,
   ],
   imports: [
     CommonModule,
     NgZorroAntdModule,
-    RouterModule
+    RouterModule,
+    ScrollingModule
   ],
-  exports: EXPORT_COMPONENTS,
   providers: [
-    LayoutStore
+    LayoutService
   ]
 })
 export class LayoutModule {

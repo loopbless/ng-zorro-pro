@@ -5,19 +5,14 @@
     <h1>Ng Zorro Pro</h1>
   </a>
 </div>
-<ul [class.ant-pro-menu]="mode==='inline'" nz-menu [nzTheme]="'dark'" [nzMode]="mode" [nzInlineCollapsed]="collapsed">
-  <ng-container *ngFor="let menu of menus">
-    <li nz-submenu *ngIf="menu.children && menu.children.length > 0;else menuItem">
-      <span title><i nz-icon [type]="menu.icon"></i><span class="nav-text">{{menu.name}}</span></span>
-      <ul>
-        <li *ngFor="let submenu of menu.children" nz-menu-item
-            [nzSelected]="submenu.router === selectedUrl" (click)="onGoPage(submenu)">{{submenu.name}}</li>
-      </ul>
-    </li>
-    <ng-template #menuItem>
-      <li nz-menu-item (click)="onGoPage(menu)" [nzSelected]="menu.router === selectedUrl">
-        <span><i nz-icon [type]="menu.icon"></i><span class="nav-text">{{menu.name}}</span></span>
-      </li>
-    </ng-template>
-  </ng-container>
-</ul>
+<ant-pro-levels-menu
+  class="levels-menu"
+  [menus]="menus"
+  theme="dark"
+  [mode]="mode"
+  [selected]="selectedUrl"
+  [inlineCollapsed]="collapsed"
+  [class.ant-pro-menu]="mode==='inline'"
+>
+</ant-pro-levels-menu>
+

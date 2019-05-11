@@ -1,36 +1,47 @@
 <nz-layout class="layout">
-  <nz-header *ngIf="layout.mode==='top'">
-    <pro-navigation-bar class="ant-pro-top-nav"
-      [selectedUrl]="currentUrl"
-      [menus]="menus$|async"
-      [collapsed]="layout.collapsed"
-      mode="horizontal">
-    </pro-navigation-bar>
+  <nz-header class="ant-pro-top-header" *ngIf="setting.layoutMode==='horizontal'">
+    <div #header>
+      <ant-pro-navigation-bar
+        class="ant-pro-top-nav"
+        [selectedUrl]="currentUrl"
+        [menus]="menus"
+        [collapsed]="isCollapsed"
+        mode="horizontal">
+      </ant-pro-navigation-bar>
+      <ant-pro-global-header theme="dark"></ant-pro-global-header>
+    </div>
   </nz-header>
 
-  <nz-sider nzCollapsible nzWidth="256"
-    *ngIf="layout.mode==='left'"
-    [(nzCollapsed)]="layout.collapsed"
-    [nzReverseArrow]="true"
-    (nzCollapsedChange)="onChangeCollapsed($event)">
-    <pro-navigation-bar
-      [selectedUrl]="currentUrl"
-      [menus]="menus$|async"
-      [collapsed]="layout.collapsed"
-      mode="inline">
-    </pro-navigation-bar>
-  </nz-sider>
+  <ng-template [ngIf]="!setting.layoutMode || setting.layoutMode==='vertical'">
+    <nz-sider nzWidth="256" nzCollapsible
+      [(nzCollapsed)]="isCollapsed"
+      [nzReverseArrow]="true"
+      [nzBreakpoint]="'lg'"
+      (nzCollapsedChange)="onChangeCollapsed($event)">
+      <ant-pro-navigation-bar
+        [selectedUrl]="currentUrl"
+        [menus]="menus"
+        [collapsed]="isCollapsed"
+        mode="inline">
+      </ant-pro-navigation-bar>
+    </nz-sider>
+  </ng-template>
 
   <nz-layout>
-    <nz-header class="ant-pro-header" *ngIf="layout.mode==='left'">
+    <nz-header class="ant-pro-header" *ngIf="setting.layoutMode==='vertical'">
       <i class="trigger" nz-icon
-         [type]="layout.collapsed ? 'menu-unfold' : 'menu-fold'"
-         (click)="layout.collapsed = !layout.collapsed"
+         [type]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+         (click)="isCollapsed = !isCollapsed"
       ></i>
+      <ant-pro-global-header></ant-pro-global-header>
     </nz-header>
-    <nz-content>
+
+    <nz-content [class.ant-pro-content]="setting.layoutMode==='horizontal'">
       <router-outlet></router-outlet>
     </nz-content>
+    <nz-footer>
+      <ant-pro-global-footer></ant-pro-global-footer>
+    </nz-footer>
   </nz-layout>
-  <pro-layout-setting [(layout)]="layout"></pro-layout-setting>
+  <ant-pro-setting-drawer [setting]="setting"></ant-pro-setting-drawer>
 </nz-layout>

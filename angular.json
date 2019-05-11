@@ -7,7 +7,7 @@
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
-      "prefix": "pro",
+      "prefix": "ant-pro",
       "schematics": {
         "@schematics/angular:component": {
           "style": "less"
@@ -32,7 +32,6 @@
               }
             ],
             "styles": [
-              "src/styles/ng-zorro-pro.less",
               "src/styles.less"
             ],
             "stylePreprocessorOptions": {

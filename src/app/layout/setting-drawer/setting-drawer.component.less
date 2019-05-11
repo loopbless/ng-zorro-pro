@@ -1,0 +1,58 @@
+@import "theme";
+
+.@{ant-pro-prefix}-layout-setting {
+  position: absolute;
+  top: 240px;
+  left: -48px;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  font-size: 16px;
+  text-align: center;
+  background: @primary-color;
+  border-radius: 4px 0 0 4px;
+  cursor: pointer;
+  pointer-events: auto;
+  i {
+    color: #fff;
+  }
+}
+
+@keyframes antdDrawerFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
+
+.@{ant-pro-prefix}-setting-item{
+  display: flex;
+  div{
+    margin-right: 16px;
+    margin-bottom: 12px;
+    color: rgba(0,0,0,.85);
+    font-size: 14px;
+    line-height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  img{
+    cursor: pointer;
+  }
+  i[type=check]{
+    position: absolute;
+    left: 25px;
+    top: 16px;
+    color: @primary-color;
+  }
+  div:last-child i[type=check]{
+    left: 20px;
+  }
+}

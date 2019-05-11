@@ -1,6 +1,6 @@
 @import "theme";
 
-.layout{
+.layout {
   height: 100%;
 }
 
@@ -9,21 +9,41 @@ nz-sider {
   box-shadow: 2px 0 6px rgba(0, 21, 41, .35);
 }
 
-nz-header nz-navigation-bar{
-  display: flex;
-  width: @screen-xl;
-  margin: 0 auto;
+nz-header {
+  > div {
+    display: flex;
+    max-width: @screen-xl;
+    margin: 0 auto;
+    height: @layout-header-height;
+    justify-content: space-between;
+
+    .@{ant-pro-prefix}-top-nav {
+      flex: 1 1;
+      position: relative;
+      overflow: hidden;
+
+      ::ng-deep ul {
+        position: absolute;
+      }
+    }
+  }
 }
 
 .@{ant-pro-prefix}-header {
   padding: 0;
   z-index: 1;
   position: relative;
+  display: flex;
+  justify-content: space-between;
   background-color: #fff;
   box-shadow: 0 1px 4px rgba(0, 21, 41, .08);
 }
 
-.@{ant-pro-prefix}-top-nav{
+.@{ant-pro-prefix}-top-header {
+  padding: 0;
+}
+
+.@{ant-pro-prefix}-top-nav {
   display: flex;
 }
 
@@ -43,6 +63,16 @@ nz-header nz-navigation-bar{
       position: absolute;
       width: 100%;
       min-height: 100%;
+    }
+  }
+}
+
+.@{ant-pro-prefix}-content {
+  ::ng-deep {
+    .@{ant-pro-prefix}-page-header-container,
+    .@{ant-prefix}-layout-content > .@{ant-prefix}-card {
+      max-width: @screen-xl;
+      margin: 0 auto;
     }
   }
 }

@@ -1,0 +1,68 @@
+<!-- nz-menu don't support dynamic creation of multi-level menus -->
+<ul nz-menu [nzTheme]="'dark'" [nzMode]="mode" [nzInlineCollapsed]="inlineCollapsed">
+  <ng-container *ngFor="let menu of menus">
+    <li nz-submenu *ngIf="menu.children && menu.children.length > 0;else menuItem">
+      <span title><i nz-icon *ngIf="menu.icon" [type]="menu.icon"></i><span>{{menu.name}}</span></span>
+      <ul *ngIf="menu.children && menu.children.length > 0">
+        <ng-container *ngFor="let menu1 of menu.children">
+          <li nz-submenu *ngIf="menu1.children && menu1.children.length > 0;else menuItem1">
+            <span title><i nz-icon *ngIf="menu1.icon" [type]="menu1.icon"></i><span>{{menu1.name}}</span></span>
+            <ul *ngIf="menu1.children && menu1.children.length > 0">
+              <ng-container *ngFor="let menu2 of menu1.children">
+                <li nz-submenu *ngIf="menu2.children && menu2.children.length > 0;else menuItem2">
+                  <span title><i nz-icon *ngIf="menu2.icon" [type]="menu2.icon"></i><span>{{menu2.name}}</span></span>
+                  <ul *ngIf="menu2.children && menu2.children.length > 0">
+                    <ng-container *ngFor="let menu3 of menu2.children">
+                      <li nz-submenu *ngIf="menu3.children && menu3.children.length > 0;else menuItem3">
+                        <span title><i nz-icon *ngIf="menu3.icon" [type]="menu3.icon"></i><span>{{menu3.name}}</span></span>
+                        <ul *ngIf="menu3.children && menu3.children.length > 0">
+                          <ng-container *ngFor="let menu4 of menu3.children">
+                            <li nz-submenu *ngIf="menu4.children && menu4.children.length > 0;else menuItem4">
+                              <span title><i nz-icon *ngIf="menu4.icon" [type]="menu4.icon"></i><span>{{menu4.name}}</span></span>
+                              <ul *ngIf="menu4.children && menu4.children.length > 0">
+                                <ng-container *ngFor="let menu5 of menu3.children">
+                                  <li nz-menu-item (click)="onGoPage(menu5)" [nzSelected]="menu5.router === selected">
+                                    <span><i nz-icon *ngIf="menu5.icon" [type]="menu5.icon"></i><span>{{menu5.name}}</span></span>
+                                  </li>
+                                </ng-container>
+                              </ul>
+                            </li>
+                            <ng-template #menuItem4>
+                              <li nz-menu-item (click)="onGoPage(menu4)" [nzSelected]="menu4.router === selected">
+                                <span><i nz-icon *ngIf="menu4.icon" [type]="menu4.icon"></i><span>{{menu4.name}}</span></span>
+                              </li>
+                            </ng-template>
+                          </ng-container>
+                        </ul>
+                      </li>
+                      <ng-template #menuItem3>
+                        <li nz-menu-item (click)="onGoPage(menu3)" [nzSelected]="menu3.router === selected">
+                          <span><i nz-icon *ngIf="menu3.icon" [type]="menu3.icon"></i><span>{{menu3.name}}</span></span>
+                        </li>
+                      </ng-template>
+                    </ng-container>
+                  </ul>
+                </li>
+                <ng-template #menuItem2>
+                  <li nz-menu-item (click)="onGoPage(menu2)" [nzSelected]="menu2.router === selected">
+                    <span><i nz-icon *ngIf="menu2.icon" [type]="menu2.icon"></i><span>{{menu2.name}}</span></span>
+                  </li>
+                </ng-template>
+              </ng-container>
+            </ul>
+          </li>
+          <ng-template #menuItem1>
+            <li nz-menu-item (click)="onGoPage(menu1)" [nzSelected]="menu1.router === selected">
+              <span><i nz-icon *ngIf="menu1.icon" [type]="menu1.icon"></i><span>{{menu1.name}}</span></span>
+            </li>
+          </ng-template>
+        </ng-container>
+      </ul>
+    </li>
+    <ng-template #menuItem>
+      <li nz-menu-item (click)="onGoPage(menu)" [nzSelected]="menu.router === selected">
+        <span><i nz-icon *ngIf="menu.icon" [type]="menu.icon"></i><span>{{menu.name}}</span></span>
+      </li>
+    </ng-template>
+  </ng-container>
+</ul>

@@ -11,16 +11,16 @@ const routes: Routes = [
         loadChildren: './features/dashboard/dashboard.module#DashboardModule'
       },
       {
-        path: 'table',
-        loadChildren: './features/tables/tables.module#TablesModule'
+        path: 'list',
+        loadChildren: './features/list/list.module#ListModule'
       },
       {
         path: 'form',
-        loadChildren: './features/forms/forms.module#FormsModule'
+        loadChildren: './features/form/form.module#FormModule'
       },
       {
         path: 'tree',
-        loadChildren: './features/trees/trees.module#TreesModule'
+        loadChildren: './features/tree/tree.module#TreeModule'
       },
     ]
   },

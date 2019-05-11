@@ -1,0 +1,27 @@
+<nz-drawer
+  nzWidth="300px"
+  [nzVisible]="visible"
+  nzPlacement="right"
+  nzTitle="整体风格设置"
+  (nzOnClose)="visible = false"
+>
+  <div class="ant-pro-layout-setting"
+       (click)="visible=!visible">
+    <i nz-icon [type]="visible?'close':'setting'"></i>
+  </div>
+  <h3>主题色</h3>
+  <section class="ant-pro-setting-item">
+    <ant-pro-theme-color [selected]="'daybreak'"></ant-pro-theme-color>
+  </section>
+  <h3>导航模式</h3>
+  <section class="ant-pro-setting-item">
+    <div (click)="changeNavMode('vertical')">
+      <img src="https://gw.alipayobjects.com/zos/rmsportal/JopDzEhOqwOjeNTXkoje.svg" alt="">
+      <i nz-icon type="check" [hidden]="setting?.layoutMode!=='vertical'"></i>
+    </div>
+    <div (click)="changeNavMode('horizontal')">
+      <img src="https://gw.alipayobjects.com/zos/rmsportal/KDNDBbriJhLwuqMoxcAr.svg" alt="">
+      <i nz-icon type="check" [hidden]="setting?.layoutMode!=='horizontal'"></i>
+    </div>
+  </section>
+</nz-drawer>
