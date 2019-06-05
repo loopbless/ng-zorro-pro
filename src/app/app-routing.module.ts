@@ -42,6 +42,10 @@ const routes: Routes = [
         path: 'editor',
         loadChildren: './features/editor/editor.module#EditorModule'
       },
+      {
+        path: 'code',
+        loadChildren: './features/code/code.module#CodeModule'
+      },
     ]
   },
 ];

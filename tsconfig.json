@@ -20,7 +20,9 @@
     ],
     "paths": {
       "@shared/*": ["src/app/shared/*"],
-      "@utils/*": ["src/app/utils/*"]
+      "@utils/*": ["src/app/utils/*"],
+      "@apis/*": ["src/app/core/apis/*.api.ts"],
+      "@environment": ["src/environments/environment.ts"]
     }
   }
 }

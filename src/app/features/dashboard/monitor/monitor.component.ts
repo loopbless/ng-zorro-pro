@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ant-pro-monitor',
+  selector: 'nzo-monitor',
   templateUrl: './monitor.component.html',
   styleUrls: ['./monitor.component.less']
 })

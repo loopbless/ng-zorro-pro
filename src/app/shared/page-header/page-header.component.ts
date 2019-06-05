@@ -1,22 +1,22 @@
-import { Component, Input, OnInit, TemplateRef } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'ant-pro-page-header',
+  selector: 'nzo-page-header',
   templateUrl: './page-header.component.html',
   styleUrls: ['./page-header.component.less'],
   host: {
-    class: 'ant-pro-layout-header'
-  }
+    class: 'nzo-layout-header'
+  },
 })
 export class PageHeaderComponent implements OnInit {
 
-  @Input() pageHeader: TemplateRef<any>;
+  @Input()  @ViewChild('contentTmpl') content: TemplateRef<any>;
 
   @Input() breadcrumbs = [];
 
   @Input() title: string;
 
-  @Input() description: string | TemplateRef<any>;
+  @Input() description: string;
 
   constructor() {
   }

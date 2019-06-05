@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ant-pro-not-permission',
+  selector: 'nzo-not-permission',
   templateUrl: './not-permission.component.html',
   styleUrls: ['./not-permission.component.less']
 })

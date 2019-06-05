@@ -1,44 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import { NzoFormList } from '@utils/list';
-import { FormBuilder } from '@angular/forms';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { NzoBaseForm } from '@utils/form';
+import { TableApi } from '@apis/table';
+import { NzoPageField } from '@shared/page-pagination/page-pagination.component';
+import { NzMessageService } from 'ng-zorro-antd';
 
 @Component({
-  selector: 'ant-pro-query-table',
+  selector: 'nzo-query-table',
   templateUrl: './query-table.component.html',
   styleUrls: ['./query-table.component.less']
 })
-export class QueryTableComponent extends NzoFormList implements OnInit {
-
-  listOfData = [
-    {
-      key: '1',
-      name: 'John Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park'
-    },
-    {
-      key: '2',
-      name: 'Jim Green',
-      age: 42,
-      address: 'London No. 1 Lake Park'
-    },
-    {
-      key: '3',
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park'
-    }
-  ];
+export class QueryTableComponent extends NzoBaseForm implements OnInit {
 
   isCollapse = true;
-  tableForm: any;
 
-  constructor(private fb: FormBuilder) {
-    super();
-  }
+  @ViewChild('fieldTmpl') fieldTmpl: TemplateRef<any>;
 
-  ngOnInit() {
-    this.tableForm = this.fb.group({
+  fields: NzoPageField[];
+
+  constructor(private api: TableApi,
+              private message: NzMessageService) {
+    super({
       name: [null],
       status: [null],
       number: [null],
@@ -48,6 +29,21 @@ export class QueryTableComponent extends NzoFormList implements OnInit {
     });
   }
 
-  onResetForm() {
+  ngOnInit() {
+    this.fields = [
+      {title: '序号', fieldValue: (data, i) => i + 1},
+      {title: '名称', template: this.fieldTmpl},
+      {title: '描述', fieldKey: 'description'},
+      {title: '地址', fieldKey: 'address'},
+      {
+        title: '操作', actions: [{
+          name: '修改',
+          action: (data) => {
+            this.message.success('您点击修改`' + data.name + '`');
+          }
+        }]
+      },
+    ];
   }
+
 }

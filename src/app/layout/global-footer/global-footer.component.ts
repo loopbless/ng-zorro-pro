@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ant-pro-global-footer',
+  selector: 'nzo-global-footer',
   templateUrl: './global-footer.component.html',
   styleUrls: ['./global-footer.component.less']
 })

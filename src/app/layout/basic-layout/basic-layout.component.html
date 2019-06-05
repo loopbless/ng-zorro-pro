@@ -1,14 +1,14 @@
 <nz-layout class="layout">
-  <nz-header class="ant-pro-top-header" *ngIf="setting.layoutMode==='horizontal'">
+  <nz-header class="nzo-top-header" *ngIf="setting.layoutMode==='horizontal'">
     <div #header>
-      <ant-pro-navigation-bar
-        class="ant-pro-top-nav"
+      <nzo-navigation-bar
+        class="nzo-top-nav"
         [selectedUrl]="currentUrl"
         [menus]="menus"
         [collapsed]="isCollapsed"
         mode="horizontal">
-      </ant-pro-navigation-bar>
-      <ant-pro-global-header theme="dark"></ant-pro-global-header>
+      </nzo-navigation-bar>
+      <nzo-global-header theme="dark"></nzo-global-header>
     </div>
   </nz-header>
 
@@ -18,30 +18,30 @@
       [nzReverseArrow]="true"
       [nzBreakpoint]="'lg'"
       (nzCollapsedChange)="onChangeCollapsed($event)">
-      <ant-pro-navigation-bar
+      <nzo-navigation-bar
         [selectedUrl]="currentUrl"
         [menus]="menus"
         [collapsed]="isCollapsed"
         mode="inline">
-      </ant-pro-navigation-bar>
+      </nzo-navigation-bar>
     </nz-sider>
   </ng-template>
 
   <nz-layout>
-    <nz-header class="ant-pro-header" *ngIf="setting.layoutMode==='vertical'">
+    <nz-header class="nzo-header" *ngIf="setting.layoutMode==='vertical'">
       <i class="trigger" nz-icon
          [type]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
          (click)="isCollapsed = !isCollapsed"
       ></i>
-      <ant-pro-global-header></ant-pro-global-header>
+      <nzo-global-header></nzo-global-header>
     </nz-header>
 
-    <nz-content [class.ant-pro-content]="setting.layoutMode==='horizontal'">
+    <nz-content [class.nzo-content]="setting.layoutMode==='horizontal'">
       <router-outlet></router-outlet>
     </nz-content>
     <nz-footer>
-      <ant-pro-global-footer></ant-pro-global-footer>
+      <nzo-global-footer></nzo-global-footer>
     </nz-footer>
   </nz-layout>
-  <ant-pro-setting-drawer [setting]="setting"></ant-pro-setting-drawer>
+  <nzo-setting-drawer [setting]="setting"></nzo-setting-drawer>
 </nz-layout>

@@ -1,0 +1,21 @@
+<nzo-page-layout>
+  <nzo-page-header
+    [breadcrumbs]="[{title: '代码生成'}, {title: '模板选择'}]"
+    [content]="titleContent"
+  ></nzo-page-header>
+  <ng-template #titleContent>
+    <h2>代码生成</h2>
+    <div class="nzo-code-header">
+      <p><i nz-icon type="copy"></i> 个性模板选择</p>
+      <button nz-button nzType="primary" (click)="onGoNext()">下一步</button>
+    </div>
+  </ng-template>
+  <nzo-page-content>
+
+    <nz-card class="ant-rmh-lg ant-rmv-lg" [nzTitle]="" [nzBordered]="false" [nzLoading]="loading">
+      <div nz-card-grid [ngClass]="{'ant-card-checked':selected===i}"
+           *ngFor="let item of list;let i = index" (click)="selected = i">{{item.name}}</div>
+    </nz-card>
+
+  </nzo-page-content>
+</nzo-page-layout>

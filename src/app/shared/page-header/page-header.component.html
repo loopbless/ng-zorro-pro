@@ -1,13 +1,13 @@
 <header class="ant-page-header">
-  <div class="ant-pro-page-header-container">
-    <ng-container *ngTemplateOutlet="pageHeader"></ng-container>
+  <div class="nzo-page-header-container">
+    <nz-breadcrumb>
+      <nz-breadcrumb-item>首页</nz-breadcrumb-item>
+      <nz-breadcrumb-item *ngFor="let breadcrumb of breadcrumbs">{{breadcrumb.title}}</nz-breadcrumb-item>
+    </nz-breadcrumb>
+    <ng-container *ngTemplateOutlet="content"></ng-container>
   </div>
 </header>
-<ng-template #pageHeader>
-  <nz-breadcrumb>
-    <nz-breadcrumb-item>首页</nz-breadcrumb-item>
-    <nz-breadcrumb-item *ngFor="let breadcrumb of breadcrumbs">{{breadcrumb.title}}</nz-breadcrumb-item>
-  </nz-breadcrumb>
+<ng-template #contentTmpl>
   <h4 *ngIf="title">{{title}}</h4>
-  <div class="ant-pro-page-desc">{{description}}</div>
+  <div class="nzo-page-desc">{{description}}</div>
 </ng-template>

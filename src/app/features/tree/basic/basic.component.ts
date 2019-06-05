@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ant-pro-basic-tree',
+  selector: 'nzo-basic-tree',
   templateUrl: './basic.component.html',
   styleUrls: ['./basic.component.less']
 })

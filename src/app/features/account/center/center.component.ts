@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ant-pro-center',
+  selector: 'nzo-center',
   templateUrl: './center.component.html',
   styleUrls: ['./center.component.less']
 })

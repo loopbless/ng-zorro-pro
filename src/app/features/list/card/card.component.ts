@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ant-pro-card',
+  selector: 'nzo-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.less']
 })

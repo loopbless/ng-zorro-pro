@@ -1,16 +1,26 @@
-import { NzoBasicList } from './basic_list';
-import { NzoBasicForm } from '@utils/form';
-import { FormGroup } from '@angular/forms';
+import { NzoBaseList } from './base_list';
+import { FormConfig, FormOptions, NzoBaseForm } from '../form';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Mixins } from '@utils/mixins';
 
-export class NzoFormList extends NzoBasicList implements NzoBasicForm {
+export class NzoFormList extends NzoBaseList implements NzoBaseForm {
 
-  constructor() {
-    super();
-    Mixins.apply(this, [NzoBasicForm]);
+
+  nzoFb: FormBuilder;
+  nzoForm: FormGroup;
+
+  query: { [key: string]: any };
+
+  get params() {
+    return {...this.query, ...this.pagination};
   }
 
-  formGroup: FormGroup;
+  constructor(controlsConfig?: FormConfig,
+              options?: FormOptions) {
+    super();
+    Mixins.apply(this, [NzoBaseForm]);
+  }
+
 
   formValid: (form?: FormGroup) => boolean;
 

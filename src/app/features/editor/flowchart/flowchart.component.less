@@ -1,0 +1,41 @@
+@import "theme";
+
+@nfc: nzo-fc;
+.@{nfc}-header{
+  height: @layout-trigger-height;
+  border-bottom: 1px solid #e6e9ed;
+}
+.@{nfc}-container {
+  //background-image: radial-gradient(circle, @disabled-color, @disabled-color 1px, #FFF 1px, #FFF);
+  //background-size: @padding-md @padding-md;
+  width: 100%;
+  height: 600px;
+  display: flex;
+
+  .@{nfc}-panel {
+    width: 15%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    border-radius: @border-radius-base;
+    box-shadow: @shadow-1-right;
+  }
+
+  .@{nfc}-rect-box {
+    cursor: grab;
+  }
+
+  .@{nfc}-canvas {
+    width: 85%;
+  }
+
+  svg text {
+    user-select: none;
+  }
+
+  .@{nfc}-drag{
+    position: relative;
+    z-index: 1;
+  }
+
+}

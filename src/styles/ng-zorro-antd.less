@@ -1,0 +1,26 @@
+.@{ant-prefix}-calendar-picker {
+  nz-picker .@{ant-prefix}-calendar-picker{
+    width: 100% !important;
+  }
+}
+
+// setting default for ng-zorro-antd
+.@{ant-prefix}-btn + a,
+.@{ant-prefix}-btn + .@{ant-prefix}-btn{
+  margin-left: @padding-md;
+}
+
+// table form
+.ant-form-item[nzflex] {
+  margin-bottom: @padding-md;
+  .@{ant-prefix}-form-item-control-wrapper {
+    flex: 1;
+  }
+  .@{ant-prefix}-form-item-control {
+    .@{ant-prefix}-select,
+    .@{ant-prefix}-calendar-picker,
+    .@{ant-prefix}-input-number {
+      width: 100%;
+    }
+  }
+}

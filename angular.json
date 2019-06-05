@@ -7,7 +7,7 @@
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
-      "prefix": "ant-pro",
+      "prefix": "nzo",
       "schematics": {
         "@schematics/angular:component": {
           "style": "less"
@@ -84,11 +84,13 @@
           },
           "configurations": {
             "production": {
+              "proxyConfig": "proxy.conf.json",
               "browserTarget": "ng-zorro-pro:build:production"
             },
             "hmr": {
               "hmr": true,
               "host": "0.0.0.0",
+              "proxyConfig": "proxy.conf.json",
               "browserTarget": "ng-zorro-pro:build:hmr"
             }
           }

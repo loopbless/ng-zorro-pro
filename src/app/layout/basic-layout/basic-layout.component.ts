@@ -1,14 +1,14 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { MenuApi } from '../../core/apis/menu.api';
 import { LayoutService } from '../layout.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { MenuApi } from '@apis/menu';
 import { setting } from '../../../setting';
 
 export const GLOBAL_LAYOUT_ID = 'main';
 
 @Component({
-  selector: 'ant-pro-basic-layout',
+  selector: 'nzo-basic-layout',
   templateUrl: './basic-layout.component.html',
   styleUrls: [
     './basic-layout.component.less',

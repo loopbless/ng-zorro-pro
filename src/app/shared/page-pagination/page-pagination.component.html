@@ -1,0 +1,38 @@
+<nz-table #nzTable [nzData]="pageData.list" [nzBordered]="nzoBordered" nzFrontPagination="false"
+          [nzShowTotal]="totalTemplate"
+          [nzTotal]="pageData.total" nzShowSizeChanger nzShowQuickJumper [nzLoading]="isLoading"
+          [(nzPageIndex)]="pagination.number"
+          [(nzPageSize)]='pagination.limit' (nzPageIndexChange)="onChangePageIndex($event)"
+          (nzPageSizeChange)="onChangePageSize($event)">
+  <thead>
+  <tr>
+    <th *ngIf="nzoShowCheckbox" nzShowCheckbox [(nzChecked)]="nzoCheck.allChecked"
+         [nzIndeterminate]="nzoCheck.indeterminate"
+         (nzCheckedChange)="nzoAllCheck($event)"></th>
+    <th *ngFor="let field of nzoFields">{{field.title}}</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of nzTable.data;let i = index">
+    <td *ngIf="nzoShowCheckbox" nzShowCheckbox [(nzChecked)]="nzoCheck.list[i].checked" (nzCheckedChange)="nzoRefreshCheck(item)"></td>
+    <td *ngFor="let field of nzoFields">
+      <ng-container *ngIf="!field.actions; else actionTmpl">
+        <ng-container *ngIf="!field.template; else tmpl">
+          {{ field.fieldValue ? (field.fieldValue|nozFnValue:item:i) : item[field.fieldKey]}}
+        </ng-container>
+        <ng-template #tmpl [ngTemplateOutlet]="field.template" [ngTemplateOutletContext]="{$implicit:item,index:i}">
+        </ng-template>
+      </ng-container>
+      <ng-template #actionTmpl>
+        <ng-container *ngFor="let action of field.actions;let v = index">
+          <a (click)="action.action(item, i)">{{ action.name }}</a>
+          <nz-divider nzType="vertical" *ngIf="(v+1) < field.actions.length"></nz-divider>
+        </ng-container>
+      </ng-template>
+    </td>
+  </tr>
+  </tbody>
+</nz-table>
+<ng-template #totalTemplate let-total>
+  总共 {{total}} 条 第 {{pagination.number}} / {{pages}} 页
+</ng-template>

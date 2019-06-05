@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ant-pro-error',
+  selector: 'nzo-error',
   templateUrl: './error.component.html',
   styleUrls: ['./error.component.less']
 })

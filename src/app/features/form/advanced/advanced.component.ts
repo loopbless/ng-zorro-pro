@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ant-pro-form-advanced-form',
+  selector: 'nzo-form-advanced-form',
   templateUrl: './advanced.component.html',
   styleUrls: ['./advanced.component.less']
 })

@@ -1,0 +1,20 @@
+<nzo-page-layout>
+  <nzo-page-header
+    [breadcrumbs]="[{title: '代码生成'}, {title: '模板配置'}]"
+    [content]="titleContent"
+  ></nzo-page-header>
+  <ng-template #titleContent>
+    <h2>代码生成</h2>
+    <div class="nzo-code-header">
+      <p><i nz-icon type="setting" ></i> 配置模板、设置相关参数</p>
+      <div>
+        <button nz-button class="ant-mr-sm" nzType="primary" nzGhost [routerLink]="'/code/template'">上一步</button>
+        <button nz-button nzType="primary">生成代码</button>
+      </div>
+    </div>
+  </ng-template>
+  <nzo-page-content>
+
+
+  </nzo-page-content>
+</nzo-page-layout>

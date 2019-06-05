@@ -1,0 +1,16 @@
+@import "theme";
+.nzo-prefix-code-header{
+  display: flex;
+  justify-content: space-between;
+  p{
+    line-height: @btn-height-base;
+    margin: 0;
+  }
+}
+
+.ant-card-checked{
+  background-color: fade(@success-color, 15%);
+  &:after{
+    content: '✅'
+  }
+}

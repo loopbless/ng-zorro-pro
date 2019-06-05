@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ant-pro-global-header',
+  selector: 'nzo-global-header',
   templateUrl: './global-header.component.html',
   styleUrls: ['./global-header.component.less'],
 })

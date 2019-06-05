@@ -1,26 +1,105 @@
-
 @directions: top, right, bottom, left;
+
 
 .loop-distance-directions(@index, @type) when (@index > 0) {
   @item-type: replace(@type, '^(.).*', '$1');
   @direction: extract(@directions, @index);
   @direction-type: replace(@direction, '^(.).*', '$1');
-  .@{ant-prefix}-@{item-type}@{direction-type}-lg{
+  .@{nzo-prefix}-@{item-type}@{direction-type}-lg {
       @{type}-@{direction}: @padding-lg;
   }
-  .@{ant-prefix}-@{item-type}@{direction-type}-md{
+  .@{nzo-prefix}-@{item-type}@{direction-type}-md {
       @{type}-@{direction}: @padding-md;
   }
-  .@{ant-prefix}-@{item-type}@{direction-type}-sm{
+  .@{nzo-prefix}-@{item-type}@{direction-type}-sm {
       @{type}-@{direction}: @padding-sm;
   }
-  .@{ant-prefix}-@{item-type}@{direction-type}-xs{
+  .@{nzo-prefix}-@{item-type}@{direction-type}-xs {
       @{type}-@{direction}: @padding-xs;
   }
   .loop-distance-directions((@index - 1), @type);
 }
 
+@planes: vertical, horizontal;
+
+
+.loop-plane-v(@index, @type) {
+  @item-type: replace(@type, '^(.).*', '$1');
+  @plane: extract(@planes, @index);
+  @plane-type: replace(@plane, '^(.).*', '$1');
+
+  .@{nzo-prefix}-@{item-type}@{plane-type}-lg {
+      @{type}: @padding-lg 0;
+  }
+  .@{nzo-prefix}-@{item-type}@{plane-type}-md {
+      @{type}: @padding-md 0;
+  }
+  .@{nzo-prefix}-@{item-type}@{plane-type}-sm {
+      @{type}: @padding-sm 0;
+  }
+  .@{nzo-prefix}-@{item-type}@{plane-type}-xs {
+      @{type}: @padding-xs 0;
+  }
+
+  .@{nzo-prefix}-r@{item-type}@{plane-type}-lg {
+      @{type}-top: -@padding-lg;
+      @{type}-bottom: -@padding-lg;
+  }
+  .@{nzo-prefix}-r@{item-type}@{plane-type}-md {
+      @{type}-top: -@padding-md;
+      @{type}-bottom: -@padding-md;
+  }
+  .@{nzo-prefix}-r@{item-type}@{plane-type}-sm {
+      @{type}-top: -@padding-sm;
+      @{type}-bottom: -@padding-sm;
+  }
+  .@{nzo-prefix}-r@{item-type}@{plane-type}-xs {
+      @{type}-top: -@padding-xs;
+      @{type}-bottom: -@padding-xs;
+  }
+}
+
+.loop-plane-h(@index, @type) {
+  @item-type: replace(@type, '^(.).*', '$1');
+  @plane: extract(@planes, @index);
+  @plane-type: replace(@plane, '^(.).*', '$1');
+
+  .@{nzo-prefix}-@{item-type}@{plane-type}-lg {
+      @{type}: 0 @padding-lg;
+  }
+  .@{nzo-prefix}-@{item-type}@{plane-type}-md {
+      @{type}: 0 @padding-md;
+  }
+  .@{nzo-prefix}-@{item-type}@{plane-type}-sm {
+      @{type}: 0 @padding-sm;
+  }
+  .@{nzo-prefix}-@{item-type}@{plane-type}-xs {
+      @{type}: 0 @padding-xs;
+  }
+
+  .@{nzo-prefix}-r@{item-type}@{plane-type}-lg {
+      @{type}-left: -@padding-lg;
+      @{type}-right: -@padding-lg;
+  }
+  .@{nzo-prefix}-r@{item-type}@{plane-type}-md {
+      @{type}-left: -@padding-md;
+      @{type}-right: -@padding-md;
+  }
+  .@{nzo-prefix}-r@{item-type}@{plane-type}-sm {
+      @{type}-left: -@padding-sm;
+      @{type}-right: -@padding-sm;
+  }
+  .@{nzo-prefix}-r@{item-type}@{plane-type}-xs {
+      @{type}-left: -@padding-xs;
+      @{type}-right: -@padding-xs;
+  }
+}
+
 .distance() {
   .loop-distance-directions(length(@directions), margin);
   .loop-distance-directions(length(@directions), padding);
+  .loop-plane-v(length(@planes), margin);
+  .loop-plane-v(length(@planes), padding);
+  .loop-plane-h(length(@planes), padding);
+  .loop-plane-h(length(@planes), margin);
 }

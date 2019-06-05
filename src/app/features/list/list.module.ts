@@ -4,12 +4,14 @@ import { QueryTableComponent } from './table/query-table.component';
 import { ListRoutingModule } from './list-routing.module';
 import { SharedModule } from '@shared/shared.module';
 import { CardComponent } from './card/card.component';
+import { QueryTablesComponent } from './query-tables/query-tables.component';
 
 @NgModule({
   declarations: [
     BasicComponent,
     QueryTableComponent,
-    CardComponent
+    CardComponent,
+    QueryTablesComponent
   ],
   imports: [
     SharedModule,

@@ -1,6 +1,6 @@
-<ant-pro-page-layout>
-  <ant-pro-page-header [breadcrumbs]="[{title: '列表'}, {title: '查询表格'}]" [title]="'查询表格'"></ant-pro-page-header>
-  <ant-pro-page-content>
+<nzo-page-layout>
+  <nzo-page-header [breadcrumbs]="[{title: '列表'}, {title: '查询表格'}]" [title]="'查询表格'"></nzo-page-header>
+  <nzo-page-content>
     <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
       <nz-form-item>
         <nz-form-label [nzLg]='7' [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">E-mail</nz-form-label>
@@ -103,12 +103,12 @@
           </label>
         </nz-form-control>
       </nz-form-item>
-      <nz-form-item nz-row class="ant-pro-form-footer">
+      <nz-form-item nz-row class="nzo-form-footer">
         <nz-form-control [nzSpan]="14" [nzOffset]="7">
           <button nz-button>取 消</button>
           <button nz-button nzType="primary">提 交</button>
         </nz-form-control>
       </nz-form-item>
     </form>
-  </ant-pro-page-content>
-</ant-pro-page-layout>
+  </nzo-page-content>
+</nzo-page-layout>

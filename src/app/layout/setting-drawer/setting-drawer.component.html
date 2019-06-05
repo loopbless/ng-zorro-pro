@@ -5,16 +5,16 @@
   nzTitle="整体风格设置"
   (nzOnClose)="visible = false"
 >
-  <div class="ant-pro-layout-setting"
+  <div class="nzo-layout-setting"
        (click)="visible=!visible">
     <i nz-icon [type]="visible?'close':'setting'"></i>
   </div>
   <h3>主题色</h3>
-  <section class="ant-pro-setting-item">
-    <ant-pro-theme-color [selected]="'daybreak'"></ant-pro-theme-color>
+  <section class="nzo-setting-item">
+    <nzo-theme-color [selected]="'daybreak'"></nzo-theme-color>
   </section>
   <h3>导航模式</h3>
-  <section class="ant-pro-setting-item">
+  <section class="nzo-setting-item">
     <div (click)="changeNavMode('vertical')">
       <img src="https://gw.alipayobjects.com/zos/rmsportal/JopDzEhOqwOjeNTXkoje.svg" alt="">
       <i nz-icon type="check" [hidden]="setting?.layoutMode!=='vertical'"></i>

@@ -1,0 +1,175 @@
+<nzo-page-layout>
+  <nzo-page-header [breadcrumbs]="[{title: '列表'}, {title: '查询表格'}]" [title]="'查询表格'"></nzo-page-header>
+  <nzo-page-content>
+    <nz-tabset>
+      <nz-tab nzTitle="普通查询列表">
+        <ng-container *ngTemplateOutlet="listTmpl"></ng-container>
+      </nz-tab>
+      <nz-tab nzTitle="checkbox查询列表">
+        <ng-container *ngTemplateOutlet="listCheckTmpl"></ng-container>
+      </nz-tab>
+    </nz-tabset>
+    <ng-template #listTmpl>
+      <form nz-form [formGroup]="formGroup1">
+        <div nz-row [nzGutter]="24">
+          <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="8">
+            <nz-form-item nzFlex>
+              <nz-form-label>规则名称</nz-form-label>
+              <nz-form-control>
+                <input nz-input placeholder="请输入" [formControlName]="'name'"/>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="8">
+            <nz-form-item nzFlex>
+              <nz-form-label>使用状态</nz-form-label>
+              <nz-form-control>
+                <input nz-input placeholder="请输入" [formControlName]="'status'"/>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="8" [hidden]="isCollapse">
+            <nz-form-item nzFlex>
+              <nz-form-label>调用次数</nz-form-label>
+              <nz-form-control>
+                <nz-input-number nzPlaceHolder="请输入" [formControlName]="'number'" nzStep="1"></nz-input-number>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="8" [hidden]="isCollapse">
+            <nz-form-item nzFlex>
+              <nz-form-label>更新日期</nz-form-label>
+              <nz-form-control>
+                <nz-date-picker nzShowTime
+                  nzFormat="yyyy-MM-dd HH:mm:ss"
+                  nzPlaceHolder="请选择更新日期"
+                  [formControlName]="'date'"
+                ></nz-date-picker>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="8" [hidden]="isCollapse">
+            <nz-form-item nzFlex>
+              <nz-form-label>使用状态</nz-form-label>
+              <nz-form-control>
+                <input nz-input placeholder="请输入" [formControlName]="'status1'"/>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="8" [hidden]="isCollapse">
+            <nz-form-item nzFlex>
+              <nz-form-label>使用状态</nz-form-label>
+              <nz-form-control>
+                <input nz-input placeholder="请输入" [formControlName]="'status2'"/>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="8">
+            <nz-form-item nzFlex>
+              <nz-form-control>
+                <button nz-button [nzType]="'primary'">查 询</button>
+                <button nz-button (click)="nzoResetForm(formGroup1)">重 置</button>
+                <a (click)="isCollapse = !isCollapse">
+                  {{isCollapse ? '展开' : '收起'}}
+                  <i nz-icon [type]="isCollapse ? 'down' : 'up'"></i>
+                </a>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+      </form>
+
+      <button class="nzo-mb-md" nz-button nzType="primary"><i nz-icon type="plus"></i>新 建</button>
+
+      <nz-alert class="nzo-mb-sm" nzType="info" [nzMessage]="nzMsg" nzShowIcon="true"></nz-alert>
+      <ng-template #nzMsg>
+        已选择 <a class="nzo-font-strong" href="javascript:void(0)">0</a> 项  服务调用次数总计
+        <span class="nzo-font-strong">0万</span>
+        <a class="nzo-ml-lg">清空</a>
+      </ng-template>
+      <nzo-page-pagination [nzoFields]="fields" [nzoFetch]="api.findByPage" nzoBordered>
+      </nzo-page-pagination>
+    </ng-template>
+    <ng-template #listCheckTmpl>
+      <form nz-form [formGroup]="formGroup2">
+        <div nz-row [nzGutter]="24">
+          <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="8">
+            <nz-form-item nzFlex>
+              <nz-form-label>规则名称</nz-form-label>
+              <nz-form-control>
+                <input nz-input placeholder="请输入" [formControlName]="'name'"/>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="8">
+            <nz-form-item nzFlex>
+              <nz-form-label>使用状态</nz-form-label>
+              <nz-form-control>
+                <input nz-input placeholder="请输入" [formControlName]="'status'"/>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="8" [hidden]="isCollapse">
+            <nz-form-item nzFlex>
+              <nz-form-label>调用次数</nz-form-label>
+              <nz-form-control>
+                <nz-input-number nzPlaceHolder="请输入" [formControlName]="'number'" nzStep="1"></nz-input-number>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="8" [hidden]="isCollapse">
+            <nz-form-item nzFlex>
+              <nz-form-label>更新日期</nz-form-label>
+              <nz-form-control>
+                <nz-date-picker nzShowTime
+                  nzFormat="yyyy-MM-dd HH:mm:ss"
+                  nzPlaceHolder="请选择更新日期"
+                  [formControlName]="'date'"
+                ></nz-date-picker>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="8" [hidden]="isCollapse">
+            <nz-form-item nzFlex>
+              <nz-form-label>使用状态</nz-form-label>
+              <nz-form-control>
+                <input nz-input placeholder="请输入" [formControlName]="'status1'"/>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="8" [hidden]="isCollapse">
+            <nz-form-item nzFlex>
+              <nz-form-label>使用状态</nz-form-label>
+              <nz-form-control>
+                <input nz-input placeholder="请输入" [formControlName]="'status2'"/>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+          <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="8">
+            <nz-form-item nzFlex>
+              <nz-form-control>
+                <button nz-button [nzType]="'primary'">查 询</button>
+                <button nz-button (click)="nzoResetForm(formGroup2)">重 置</button>
+                <a (click)="isCollapse = !isCollapse">
+                  {{isCollapse ? '展开' : '收起'}}
+                  <i nz-icon [type]="isCollapse ? 'down' : 'up'"></i>
+                </a>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+      </form>
+
+      <button class="nzo-mb-md" nz-button nzType="primary"><i nz-icon type="plus"></i>新 建</button>
+
+      <nz-alert class="nzo-mb-sm" nzType="info" [nzMessage]="nzMsg" nzShowIcon="true"></nz-alert>
+      <ng-template #nzMsg>
+        已选择 <a class="nzo-font-strong" href="javascript:void(0)">0</a> 项  服务调用次数总计
+        <span class="nzo-font-strong">0万</span>
+        <a class="nzo-ml-lg">清空</a>
+      </ng-template>
+      <nzo-page-pagination [nzoFields]="fields" [nzoFetch]="api.findByPage" nzoBordered nzoShowCheckbox>
+      </nzo-page-pagination>
+    </ng-template>
+  </nzo-page-content>
+</nzo-page-layout>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ant-pro-workplace',
+  selector: 'nzo-workplace',
   templateUrl: './workplace.component.html',
   styleUrls: ['./workplace.component.less']
 })

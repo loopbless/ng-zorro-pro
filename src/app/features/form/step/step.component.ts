@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ant-pro-step',
+  selector: 'nzo-step',
   templateUrl: './step.component.html',
   styleUrls: ['./step.component.less']
 })

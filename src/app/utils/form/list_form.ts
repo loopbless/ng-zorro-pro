@@ -1,6 +1,6 @@
-import { NzoBasicForm } from './basic_form';
+import { NzoBaseForm } from './base_form';
 
-export class NzoListForm extends NzoBasicForm {
+export class NzoListForm extends NzoBaseForm {
 
 
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ant-pro-basic-list',
+  selector: 'nzo-basic-list',
   templateUrl: './basic.component.html',
   styleUrls: ['./basic.component.less']
 })

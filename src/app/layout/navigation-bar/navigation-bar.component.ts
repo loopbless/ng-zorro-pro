@@ -4,7 +4,7 @@ import { NzDirectionVHIType } from 'ng-zorro-antd';
 import { Menu } from '../levels-menu/levels-menu.component';
 
 @Component({
-  selector: 'ant-pro-navigation-bar',
+  selector: 'nzo-navigation-bar',
   templateUrl: './navigation-bar.component.html',
   styleUrls: ['./navigation-bar.component.less'],
   exportAs: 'navigation'

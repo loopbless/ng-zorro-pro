@@ -2,35 +2,45 @@
 @import "../../node_modules/ng-zorro-antd/style/core/index.less";
 @import "../../node_modules/ng-zorro-antd/style/patch.less";
 @import "../../node_modules/ng-zorro-antd/components.less";
+@import "iconfont.css";
+
+@import "ng-zorro-antd";
+@import "mixins";
+@import "page/table";
+@import "page/code";
+
+.distance();
+
 .make-vertical-layout() {
   .@{form-prefix-cls}-item-label,
   .@{form-prefix-cls}-item-control-wrapper {
-    display: block;
     width: 100%;
   }
   .@{form-prefix-cls}-item-label {
     .make-vertical-layout-label();
   }
-  .@{form-prefix-cls}-item{
+  .@{form-prefix-cls}-item {
     display: block !important;
   }
 }
-@import "mixins";
-@import "page/table";
 
-.distance();
-
-.@{ant-pro-prefix}-sider-light{
+.@{nzo-prefix}-sider-light {
   background-color: #fff;
 }
 
 
-.@{ant-pro-prefix}-page-content {
+.@{nzo-prefix}-page-content {
   margin: 24px 24px 0;
 }
 
 @media (max-width: @screen-xs-max) {
-  .@{ant-pro-prefix}-page-content{
+  .@{nzo-prefix}-page-content {
     margin: 0;
   }
 }
+
+.@{ant-prefix}-card-border {
+
+}
+
+

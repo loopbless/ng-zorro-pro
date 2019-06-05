@@ -2,7 +2,7 @@ import { AfterViewInit, ChangeDetectionStrategy, Component, ContentChild, Elemen
 import { PageSiderComponent } from '../page-sider/page-sider.component';
 
 @Component({
-  selector: 'ant-pro-page-layout',
+  selector: 'nzo-page-layout',
   templateUrl: './page-layout.component.html',
   styleUrls: ['./page-layout.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush,

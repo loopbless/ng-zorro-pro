@@ -1,9 +1,9 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Layout, LayoutService, ProModeType } from '../layout.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { LayoutService, ProModeType } from '../layout.service';
 import { GLOBAL_LAYOUT_ID } from '../basic-layout/basic-layout.component';
 
 @Component({
-  selector: 'ant-pro-setting-drawer',
+  selector: 'nzo-setting-drawer',
   templateUrl: './setting-drawer.component.html',
   styleUrls: ['./setting-drawer.component.less']
 })

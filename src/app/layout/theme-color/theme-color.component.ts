@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ant-pro-theme-color',
+  selector: 'nzo-theme-color',
   templateUrl: './theme-color.component.html',
   styleUrls: ['./theme-color.component.less']
 })

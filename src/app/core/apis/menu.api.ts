@@ -63,6 +63,13 @@ export class MenuApi {
         ]
       },
       {
+        name: '代码生成', icon: 'code', children: [
+          {name: '主题配置', router: '/code/theme'},
+          {name: '模板创建', router: '/code/template/new'},
+          {name: '模板选择', router: '/code/template'},
+        ]
+      },
+      {
         name: '图形编辑器', icon: 'highlight', children: [
           {name: '流程编辑器', router: '/editor/flow'},
           {name: '脑图编辑器', router: '/editor/mind'},

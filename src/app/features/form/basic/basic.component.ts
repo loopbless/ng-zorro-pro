@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'ant-pro-basic-form',
+  selector: 'nzo-basic-form',
   templateUrl: './basic.component.html',
   styleUrls: ['./basic.component.less']
 })

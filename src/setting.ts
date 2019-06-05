@@ -1,7 +1,7 @@
 export const setting = {
   navTheme: 'dark', // theme for nav menu
   primaryColor: 'daybreak', // primary color of ant design
-  layoutMode: 'horizontal', // nav menu position: horizontal or vertical
+  layoutMode: 'vertical', // nav menu position: horizontal or vertical
   contentWidth: 'Fluid', // layout of content: Fluid or Fixed, only works when layout is topmenu
   fixedHeader: false, // sticky header
   autoHideHeader: false, // auto hide header

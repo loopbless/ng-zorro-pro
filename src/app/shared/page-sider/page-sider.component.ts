@@ -24,13 +24,13 @@ import { auditTime, takeUntil } from 'rxjs/operators';
 export type NzBreakPoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
 
 @Component({
-  selector: 'ant-pro-page-sider',
+  selector: 'nzo-page-sider',
   preserveWhitespaces: false,
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './page-sider.component.html',
   host: {
-    class: 'ant-pro-sider-light',
+    class: 'nzo-sider-light',
     '[class.ant-layout-sider-zero-width]': 'nzCollapsed && nzCollapsedWidth === 0',
     '[class.ant-layout-sider-light]': `nzTheme === 'light'`,
     '[class.ant-layout-sider-collapsed]': 'nzCollapsed',

@@ -7,12 +7,15 @@ import { PageSiderComponent } from './page-sider/page-sider.component';
 import { PageContentComponent } from './page-content/page-content.component';
 import { PageHeaderComponent } from './page-header/page-header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PagePaginationComponent } from './page-pagination/page-pagination.component';
+import { NozFnValuePipe } from '@shared/pipes/fn-value.pipe';
 
 const COMPONENTS = [
   PageLayoutComponent,
   PageSiderComponent,
   PageHeaderComponent,
-  PageContentComponent
+  PageContentComponent,
+  NozFnValuePipe
 ];
 
 const IMPORT_MODULE = [
@@ -29,9 +32,12 @@ const EXPORT_MODULE = [
 ];
 
 @NgModule({
-  declarations: [...COMPONENTS],
+  declarations: [...COMPONENTS, PagePaginationComponent],
   imports: IMPORT_MODULE,
-  exports: EXPORT_MODULE
+  exports: [
+    EXPORT_MODULE,
+    PagePaginationComponent
+  ]
 })
 export class SharedModule {
 }

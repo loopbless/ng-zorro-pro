@@ -1,0 +1,14 @@
+<div class="result">
+  <div class="icon">
+    <i [ngClass]="status.type" nz-icon [type]="status.icon" theme="fill"></i>
+  </div>
+  <h1 class="title" *ngIf="title">{{title}}</h1>
+  <h2 class="subtitle" *ngIf="subtitle">{{subtitle}}</h2>
+  <p class="description" *ngIf="description">{{description}}</p>
+  <div class="extra">
+    <ng-content></ng-content>
+  </div>
+  <div class="actions">
+    <ng-container *ngTemplateOutlet="actions"></ng-container>
+  </div>
+</div>

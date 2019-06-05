@@ -23,7 +23,7 @@ export interface Menu {
 }
 
 @Component({
-  selector: 'ant-pro-levels-menu',
+  selector: 'nzo-levels-menu',
   templateUrl: './levels-menu.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   styles: [`
@@ -39,7 +39,7 @@ export class LevelsMenuComponent implements OnInit, OnChanges, OnDestroy {
   @Input() mode: NzDirectionVHIType;
   @Input() inlineCollapsed: boolean;
   media$: Observable<BreakpointState>;
-  destroyMedia$: Subscription;
+  cancelMedia$: Subscription;
   private maxWidth: number;
   private cacheMenus: Menu[];
 
@@ -55,6 +55,7 @@ export class LevelsMenuComponent implements OnInit, OnChanges, OnDestroy {
       '(min-width: 720px)',
       '(min-width: 600px)',
     ]).pipe(delay(200));
+    this._mediaMenus();
   }
 
   ngOnInit() {
@@ -62,16 +63,27 @@ export class LevelsMenuComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.menus && changes.menus.currentValue) {
-      this.cacheMenus = changes.menus.currentValue;
+      this.cacheMenus = this.menus;
     }
-    if (changes.mode && this.mode === 'horizontal') {
-      this.destroyMedia$ = this.media$.subscribe(this.changeMenuWidth());
+    if (changes.mode) {
+      if (this.mode === 'horizontal') {
+        this._mediaMenus();
+      } else {
+        this.ngOnDestroy();
+      }
+    }
+  }
+
+  private _mediaMenus() {
+    if (!this.cancelMedia$) {
+      this.cancelMedia$ = this.media$.subscribe(this.changeMenuWidth());
     }
   }
 
   ngOnDestroy(): void {
-    if (this.destroyMedia$) {
-      this.destroyMedia$.unsubscribe();
+    if (this.cancelMedia$) {
+      this.cancelMedia$.unsubscribe();
+      this.cancelMedia$ = null;
     }
   }
 

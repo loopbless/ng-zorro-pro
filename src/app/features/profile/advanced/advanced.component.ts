@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ant-pro-profile-advanced',
+  selector: 'nzo-profile-advanced',
   templateUrl: './advanced.component.html',
   styleUrls: ['./advanced.component.less']
 })

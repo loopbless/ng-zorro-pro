@@ -1,9 +1,9 @@
-<ant-pro-page-layout>
-  <ant-pro-page-header [breadcrumbs]="[{title: '列表'}, {title: '查询表格'}]" [title]="'查询表格'"></ant-pro-page-header>
-  <ant-pro-page-content>
-    <form nz-form [formGroup]="tableForm">
-      <div nz-row [nzGutter]="48">
-        <div nz-col nzXs="24" nzSm="12" nzMd="8">
+<nzo-page-layout>
+  <nzo-page-header [breadcrumbs]="[{title: '列表'}, {title: '查询表格'}]" [title]="'查询表格'"></nzo-page-header>
+  <nzo-page-content>
+    <form nz-form [formGroup]="nzoForm">
+      <div nz-row [nzGutter]="24">
+        <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="8">
           <nz-form-item nzFlex>
             <nz-form-label>规则名称</nz-form-label>
             <nz-form-control>
@@ -11,7 +11,7 @@
             </nz-form-control>
           </nz-form-item>
         </div>
-        <div nz-col nzXs="24" nzSm="12" nzMd="8">
+        <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="8">
           <nz-form-item nzFlex>
             <nz-form-label>使用状态</nz-form-label>
             <nz-form-control>
@@ -19,7 +19,7 @@
             </nz-form-control>
           </nz-form-item>
         </div>
-        <div nz-col nzXs="24" nzSm="12" nzMd="8" [hidden]="isCollapse">
+        <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="8" [hidden]="isCollapse">
           <nz-form-item nzFlex>
             <nz-form-label>调用次数</nz-form-label>
             <nz-form-control>
@@ -27,12 +27,11 @@
             </nz-form-control>
           </nz-form-item>
         </div>
-        <div nz-col nzXs="24" nzSm="12" nzMd="8" [hidden]="isCollapse">
+        <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="8" [hidden]="isCollapse">
           <nz-form-item nzFlex>
             <nz-form-label>更新日期</nz-form-label>
             <nz-form-control>
-              <nz-date-picker
-                nzShowTime [nzStyle]="{width: '100%'}"
+              <nz-date-picker nzShowTime
                 nzFormat="yyyy-MM-dd HH:mm:ss"
                 nzPlaceHolder="请选择更新日期"
                 [formControlName]="'date'"
@@ -40,7 +39,7 @@
             </nz-form-control>
           </nz-form-item>
         </div>
-        <div nz-col nzXs="24" nzSm="12" nzMd="8" [hidden]="isCollapse">
+        <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="8" [hidden]="isCollapse">
           <nz-form-item nzFlex>
             <nz-form-label>使用状态</nz-form-label>
             <nz-form-control>
@@ -48,7 +47,7 @@
             </nz-form-control>
           </nz-form-item>
         </div>
-        <div nz-col nzXs="24" nzSm="12" nzMd="8" [hidden]="isCollapse">
+        <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="8" [hidden]="isCollapse">
           <nz-form-item nzFlex>
             <nz-form-label>使用状态</nz-form-label>
             <nz-form-control>
@@ -56,7 +55,7 @@
             </nz-form-control>
           </nz-form-item>
         </div>
-        <div nz-col nzXs="24" nzSm="12" nzMd="8" class="ant-pro-table-form-buttons">
+        <div nz-col nzXs="24" nzSm="12" nzMd="12" nzLg="8">
           <nz-form-item nzFlex>
             <nz-form-control>
               <button nz-button [nzType]="'primary'">查 询</button>
@@ -71,36 +70,20 @@
       </div>
     </form>
 
-    <button class="ant-mb-md" nz-button nzType="primary"><i nz-icon type="plus"></i>新 建</button>
+    <button class="nzo-mb-md" nz-button nzType="primary"><i nz-icon type="plus"></i>新 建</button>
 
-    <nz-alert class="ant-mb-sm" nzType="info" [nzMessage]="nzMsg" nzShowIcon="true"></nz-alert>
+    <nz-alert class="nzo-mb-sm" nzType="info" [nzMessage]="nzMsg" nzShowIcon="true"></nz-alert>
     <ng-template #nzMsg>
-      已选择 <a class="ant-pro-font-strong" href="javascript:void(0)">0</a> 项  服务调用次数总计
-      <span class="ant-pro-font-strong">0万</span>
-      <a class="ant-ml-lg">清空</a>
+      已选择 <a class="nzo-font-strong" href="javascript:void(0)">0</a> 项  服务调用次数总计
+      <span class="nzo-font-strong">0万</span>
+      <a class="nzo-ml-lg">清空</a>
     </ng-template>
 
-    <nz-table #basicTable [nzData]="listOfData">
-      <thead>
-      <tr>
-        <th>Name</th>
-        <th>Age</th>
-        <th>Address</th>
-        <th>Action</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let data of basicTable.data">
-        <td>{{ data.name }}</td>
-        <td>{{ data.age }}</td>
-        <td>{{ data.address }}</td>
-        <td>
-          <a>Action 一 {{ data.name }}</a>
-          <nz-divider nzType="vertical"></nz-divider>
-          <a>Delete</a>
-        </td>
-      </tr>
-      </tbody>
-    </nz-table>
-  </ant-pro-page-content>
-</ant-pro-page-layout>
+    <nzo-page-pagination [nzoFields]="fields" [nzoFetch]="api.findByPage" nzoBordered>
+    </nzo-page-pagination>
+    <ng-template #fieldTmpl let-data>
+      <i nz-icon type="user"></i>
+      {{data.name}}
+    </ng-template>
+  </nzo-page-content>
+</nzo-page-layout>
