@@ -5,7 +5,9 @@
     "baseUrl": ".",
     "paths": {
       "@shared/*": ["app/shared/*"],
-      "@utils/*": ["app/utils/*"]
+      "@utils/*": ["app/utils/*"],
+      "@apis/*": ["app/core/apis/*.api.ts"],
+      "@environment": ["environments/environment.ts"]
     }
   },
   "angularCompilerOptions": {

@@ -22,11 +22,11 @@ export class NzoFormList extends NzoBaseList implements NzoBaseForm {
   }
 
 
-  formValid: (form?: FormGroup) => boolean;
+  nzoFormValid: (form?: FormGroup) => boolean;
 
-  resetForm: (form?: FormGroup, value?: any) => void;
+  nzoResetForm: (form?: FormGroup, value?: any) => void;
 
-  resetFormStatus: (form?: FormGroup) => void;
+  nzoResetFormStatus: (form?: FormGroup) => void;
 
   onSearch(event?: KeyboardEvent) {
     if (event && event instanceof KeyboardEvent) {

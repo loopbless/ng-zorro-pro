@@ -59,7 +59,7 @@
           <nz-form-item nzFlex>
             <nz-form-control>
               <button nz-button [nzType]="'primary'">查 询</button>
-              <button nz-button (click)="onResetForm()">重 置</button>
+              <button nz-button (click)="nzoResetForm()">重 置</button>
               <a (click)="isCollapse = !isCollapse">
                 {{isCollapse ? '展开' : '收起'}}
                 <i nz-icon [type]="isCollapse ? 'down' : 'up'"></i>

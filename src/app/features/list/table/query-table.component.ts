@@ -17,7 +17,7 @@ export class QueryTableComponent extends NzoBaseForm implements OnInit {
 
   fields: NzoPageField[];
 
-  constructor(private api: TableApi,
+  constructor(public api: TableApi,
               private message: NzMessageService) {
     super({
       name: [null],
