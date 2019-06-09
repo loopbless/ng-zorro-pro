@@ -15,7 +15,9 @@ import {
   CodeOutline,
   MenuFoldOutline,
   PlusOutline,
-  CopyOutline
+  CopyOutline,
+  MenuUnfoldOutline,
+  DingdingOutline
 } from '@ant-design/icons-angular/icons';
 
 export const ANT_ICONS = [
@@ -35,5 +37,7 @@ export const ANT_ICONS = [
   CodeOutline,
   MenuFoldOutline,
   PlusOutline,
-  CopyOutline
+  CopyOutline,
+  MenuUnfoldOutline,
+  DingdingOutline
 ];
