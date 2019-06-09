@@ -11,7 +11,11 @@ import {
   GlobalOutline,
   GithubOutline,
   CopyrightOutline,
-  ProfileOutline
+  ProfileOutline,
+  CodeOutline,
+  MenuFoldOutline,
+  PlusOutline,
+  CopyOutline
 } from '@ant-design/icons-angular/icons';
 
 export const ANT_ICONS = [
@@ -27,5 +31,9 @@ export const ANT_ICONS = [
   GlobalOutline,
   GithubOutline,
   CopyrightOutline,
-  ProfileOutline
+  ProfileOutline,
+  CodeOutline,
+  MenuFoldOutline,
+  PlusOutline,
+  CopyOutline
 ];

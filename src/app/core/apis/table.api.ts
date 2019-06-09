@@ -8,7 +8,6 @@ export class TableApi {
   }
 
   findByPage(page) {
-    console.log(page);
     return of({
       list: [
         {
