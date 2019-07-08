@@ -1,26 +1,31 @@
 <nzo-page-layout>
-  <nzo-page-header [breadcrumbs]="[{title: '列表'}, {title: '基础表格'}]" [title]="'基础表格'"></nzo-page-header>
+  <nzo-page-header [title]="'基础表格'"></nzo-page-header>
   <nzo-page-content>
-    <nz-table #basicTable [nzData]="listOfData">
+    <nz-table #expandTable [nzData]="listOfMapData">
       <thead>
       <tr>
-        <th>Name</th>
-        <th>Age</th>
+        <th nzWidth="40%">Name</th>
+        <th nzWidth="30%">Age</th>
         <th>Address</th>
-        <th>Action</th>
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let data of basicTable.data">
-        <td>{{ data.name }}</td>
-        <td>{{ data.age }}</td>
-        <td>{{ data.address }}</td>
-        <td>
-          <a>Action 一 {{ data.name }}</a>
-          <nz-divider nzType="vertical"></nz-divider>
-          <a>Delete</a>
-        </td>
-      </tr>
+      <ng-container *ngFor="let data of expandTable.data">
+        <ng-container *ngFor="let item of mapOfExpandedData[data.key]">
+          <tr *ngIf="(item.parent && item.parent.expand) || !item.parent">
+            <td
+              [nzIndentSize]="item.level * 20"
+              [nzShowExpand]="!!item.children"
+              [(nzExpand)]="item.expand"
+              (nzExpandChange)="collapse(mapOfExpandedData[data.key], item, $event)"
+            >
+              {{ item.name }}
+            </td>
+            <td>{{ item.age }}</td>
+            <td>{{ item.address }}</td>
+          </tr>
+        </ng-container>
+      </ng-container>
       </tbody>
     </nz-table>
   </nzo-page-content>

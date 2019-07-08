@@ -56,7 +56,7 @@ export class PageSiderComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() nzCollapsedWidth = 80;
   @Input() nzBreakpoint: NzBreakPoint;
   @Input() nzZeroTrigger: TemplateRef<void>;
-  @Input() @ViewChild('defaultTrigger') nzTrigger: TemplateRef<void>;
+  @Input() @ViewChild('defaultTrigger', { static: true }) nzTrigger: TemplateRef<void>;
   @Input() nzReverseArrow = false;
   @Input() nzCollapsible = false;
   @Input() nzCollapsed = false;

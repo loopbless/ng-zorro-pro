@@ -1,17 +1,19 @@
-@import "theme";
+@import 'theme';
 
 @nfc: nzo-fc;
-.@{nfc}-header{
-  height: @layout-trigger-height;
-  border-bottom: 1px solid #e6e9ed;
+@border-color: #e6e9ed;
+.@{nfc}-header {
+  min-height: @layout-trigger-height;
+  border-bottom: 1px solid @border-color;
 }
+
 .@{nfc}-container {
   //background-image: radial-gradient(circle, @disabled-color, @disabled-color 1px, #FFF 1px, #FFF);
   //background-size: @padding-md @padding-md;
   width: 100%;
   height: 600px;
   display: flex;
-
+  border-bottom: 1px solid @border-color;
   .@{nfc}-panel {
     width: 15%;
     background-color: #fff;
@@ -23,6 +25,15 @@
 
   .@{nfc}-rect-box {
     cursor: grab;
+    &:hover {
+      .@{nfc}-connect-point {
+        display: inline-block;
+      }
+    }
+  }
+
+  circle {
+    cursor: crosshair;
   }
 
   .@{nfc}-canvas {
@@ -33,9 +44,45 @@
     user-select: none;
   }
 
-  .@{nfc}-drag{
+  .@{nfc}-drag {
     position: relative;
     z-index: 1;
   }
 
+  .@{nfc}-point {
+    display: none;
+    .active {
+      display: inline-block;
+    }
+  }
+  .@{nfc}-connect-point {
+    display: none;
+  }
+
+  .@{nfc}-line {
+    cursor: pointer;
+    &:hover {
+      .@{nfc}-connect-point {
+        display: inline-block;
+      }
+    }
+    circle {
+      position: relative;
+      z-index: 1;
+    }
+  }
+
+  ::ng-deep {
+    .cdk-drag-placeholder {
+      opacity: 0;
+    }
+
+    .cdk-drag-animating {
+      transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+    }
+
+    .cdk-drop-list-dragging .nzo-fc-drag:not(.cdk-drag-placeholder) {
+      transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+    }
+  }
 }

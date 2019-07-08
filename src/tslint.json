@@ -11,5 +11,6 @@
       "nz",
       "pro"
     ]
-  }
+  },
+  "prefer-const": true
 }

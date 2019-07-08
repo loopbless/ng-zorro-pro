@@ -1,39 +1,62 @@
 <div class="nzo-fc-header">
-
+  <ng-container *ngTemplateOutlet="header"></ng-container>
 </div>
-<div class="nzo-fc-container" (mousedown)="selectedIndex = null">
-  <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
-    <g transform="translate(0, 16)">
-      <ng-container *ngFor="let data of modalGraphs">
-        <g class="nzo-fc-rect-box" [ngStyle]="{transform: 'translate3d('+data.x+'px, '+data.y+'px, 0)'}"
-           (mousedown)="onCopyGraph(data)">
-          <path [attr.fill]="gradient(data.color)" [attr.stroke-width]="borderWidth"
-                [attr.stroke]="data.color" [attr.d]="data.data"></path>
-          <text class="iconfont" text-rendering="inherit" fill="rgba(0,0,0,.65)"
-                text-anchor="middle" [attr.x]="data.dx" [attr.y]="data.dy" [ngStyle]="{fontSize:fontSize+'px'}"
-                dominant-baseline="text-before-edge" [innerHTML]="data.text"></text>
-        </g>
-      </ng-container>
-    </g>
-    <line [attr.x1]="siderWidth" y1="0" [attr.x2]="siderWidth" y2="100%" stroke="#e6e9ed" stroke-width="1"></line>
-    <g>
-      <ng-container *ngFor="let data of flowGraphs;let i = index">
-        <g id="react" class="nzo-fc-rect-box"
-           cdkDrag cdkDragBoundary=".nzo-fc-container" (mousedown)="onSelected($event, i)"
-           [ngStyle]="{transform: 'translate3d('+data.x+'px, '+data.y+'px, 0)'}">
-          <path [attr.fill]="gradient(data.color, selectedIndex!==i?0.1:1)"
-                [attr.stroke-width]="selectedIndex!==i?borderWidth:borderWidth"
-                [attr.stroke]="data.color" [attr.d]="data.data"></path>
-          <text class="iconfont" text-rendering="inherit" [attr.fill]="selectedIndex!==i?'rgba(0,0,0,.65)':'#fff'" [ngStyle]="{fontSize:fontSize+'px'}"
-                text-anchor="middle" [attr.x]="data.dx" [attr.y]="data.dy" [attr.font-size]="fontSize"
-                dominant-baseline="text-before-edge" [innerHTML]="data.text"></text>
-        </g>
-      </ng-container>
-    </g>
-    <g class="nzo-fc-rect-box nzo-fc-drag" cdkDrag *ngIf="copyData" (cdkDragStarted)="onDragStart($event)"
-       (cdkDragEnded)="onDragEnd($event)" cdkDragBoundary=".nzo-fc-container">
-      <path [attr.fill]="opacity(copyData.color)" [attr.stroke-width]="borderWidth" stroke-dasharray="5,5"
-            [attr.stroke]="copyData.color" [attr.d]="copyData.data"></path>
-    </g>
+<div class="nzo-fc-container" (mousedown)="onClickCvs($event)" (contextmenu)="onContextmenu($event)">
+  <svg width="100%" xmlns:svg="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/2000/svg" height="100%" #rootCvs>
+    <svg:defs>
+      <svg:marker id="markerArrow" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto">
+        <svg:path d="M0,0A5,8,0,0,1,0,8L8,4z" style="fill: #455ff7;"/>
+      </svg:marker>
+    </svg:defs>
+
+    <svg:g transform="translate(0, 16)" *ngIf="isEditMode">
+      <!-- 模型区域 -->
+      <svg:g nzo-graph [nzoData]="data" *ngFor="let data of modalGraphs"/>
+      <!-- 模型区域图形对应的移动投影 -->
+      <svg:g nzo-graph-shadow [nzoData]="data"
+             *ngFor="let data of modalGraphs;let i = index"
+             (nzoDragGraphStarted)="onCopyGraphDragStart($event, data, i)"
+             (nzoDragGraphEnded)="onCopyGraphDragEnd($event, {x:0, y:16})"/>
+    </svg:g>
+
+    <!-- 侧边线 -->
+    <svg:line *ngIf="isEditMode" [attr.x1]="sideWidth" y1="0" [attr.x2]="sideWidth" y2="100%" stroke="#e6e9ed"
+              stroke-width="1"/>
+
+    <!-- 流程区域 -->
+    <svg:g nzo-graph [nzoData]="data" [nzoPoint]="true"
+           [nzoDragDisabled]="!isEditMode"
+           *ngFor="let data of flow.graphs$|async;let i = index"
+           [nzoSelected]="selectedGraph === i"/>
+
+    <!-- 流程连线 -->
+    <svg:g *ngFor="let data of flow.lines$|async;let i = index" nzo-line [nzoData]="data"
+           [nzoDragDisabled]="!isEditMode"
+           (nzoDblclick)="onAddLabel($event)"
+           (nzoMousedown)="onContextLine($event, data)"
+           (nzoClick)='onSelectedLine($event, data, i)' [nzoSelected]="selectedLine === i"
+           (nzoDragPointStarted)="onDragLinePointStart($event, data)"
+           (nzoDragPointEnded)="onDragLinePointEnd($event, data, i)"/>
+
+    <ng-container *ngIf="isEditMode">
+      <!-- 流程区域图形对应的移动投影 -->
+      <svg:g nzo-graph-shadow [nzoData]="data" [nzoPoint]="true"
+             *ngFor="let data of flow.graphs$|async;let i = index"
+             (nzoClick)="onSelectedGraph($event, i)"
+             [nzoSelected]="selectedGraph === i"
+             [nzoSelectedRelation]="getRelationByGraph(selectedRelations, data)"
+             (nzoDblclick)="dblclickGraph.emit(data)"
+             (nzoDragGraphStarted)="onDragGraphStart($event, data, i)"
+             (nzoDragGraphEnded)="onDragGraphEnd($event, data)"
+             (nzoDragPointStarted)="onDragGraphPointStart($event)"
+             (nzoDragPointMoved)="onDragGraphPointMove($event)"
+             (nzoDragPointEnded)="onDragGraphPointEnd($event)"/>
+    </ng-container>
   </svg>
 </div>
+<nzo-contextmenu *ngIf="isEditMode"
+  [nzoPosition]="contextPosition"
+  (nzoDelete)="onMenuDelete()"
+  (nzoCopy)="onMenuCopy()"
+  (nzoPaste)="onMenuPaste()"
+></nzo-contextmenu>

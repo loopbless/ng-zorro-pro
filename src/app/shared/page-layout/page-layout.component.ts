@@ -13,7 +13,7 @@ import { PageSiderComponent } from '../page-sider/page-sider.component';
 })
 export class PageLayoutComponent implements OnInit, AfterViewInit {
 
-  @ContentChild(PageSiderComponent) pageSider !: PageSiderComponent;
+  @ContentChild(PageSiderComponent, {static: false}) pageSider : PageSiderComponent;
 
   constructor(private elemRef: ElementRef,
               private renderer: Renderer2) {

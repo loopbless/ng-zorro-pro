@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { LayoutService, ProModeType } from '../layout.service';
+import { nzoLayoutService, ProModeType } from '../nzo-layout.service';
 import { GLOBAL_LAYOUT_ID } from '../basic-layout/basic-layout.component';
 
 @Component({
@@ -12,7 +12,7 @@ export class SettingDrawerComponent implements OnInit {
 
   @Input() setting: any;
 
-  constructor(private layout: LayoutService) {
+  constructor(private layout: nzoLayoutService) {
   }
 
   ngOnInit() {

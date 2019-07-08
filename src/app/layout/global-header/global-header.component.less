@@ -1,47 +1,59 @@
 @import "theme";
 
-:host{
+:host {
   display: inline-block;
 }
 
-.@{nzo-prefix}-global-header{
+.@{nzo-prefix}-global-header {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
-  li{
+
+  li {
     display: flex;
     padding: 0 12px;
     cursor: pointer;
     transition: all .3s;
+
     > span,
     > nz-badge,
     > nz-dropdown,
-    ::ng-deep .@{ant-prefix}-dropdown-trigger{
+    ::ng-deep .@{ant-prefix}-dropdown-trigger {
       display: flex;
       align-items: center;
     }
   }
-  i{
+
+  i {
     padding: 4px;
     font-size: 16px;
   }
-  &.@{nzo-prefix}-global-header-dark{
-    ::ng-deep span{
+
+  &.@{nzo-prefix}-global-header-dark {
+    ::ng-deep span {
       color: @text-color-dark;
     }
-    li:hover{
+
+    li:hover {
       background-color: @primary-color;
     }
   }
 
-  ::ng-deep .@{ant-prefix}-badge-count{
+  ::ng-deep .@{ant-prefix}-badge-count {
     box-shadow: none;
   }
 
-  &.@{nzo-prefix}-global-header-light{
-    li:hover{
+  &.@{nzo-prefix}-global-header-light {
+    li:hover {
       background-color: fade(#000, 2.5%);
     }
   }
+
+}
+
+::ng-deep .@{nzo-prefix}-i18n-overlay {
+  width: 100px !important;
+  margin-right: -10px;
+  margin-left: -12px;
 }

@@ -8,43 +8,43 @@ const routes: Routes = [
       {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
       {
         path: 'dashboard',
-        loadChildren: './features/dashboard/dashboard.module#DashboardModule'
+        loadChildren: () => import('./features/dashboard/dashboard.module').then(m => m.DashboardModule)
       },
       {
         path: 'list',
-        loadChildren: './features/list/list.module#ListModule'
+        loadChildren: () => import('./features/list/list.module').then(m => m.ListModule)
       },
       {
         path: 'form',
-        loadChildren: './features/form/form.module#FormModule'
+        loadChildren: () => import('./features/form/form.module').then(m => m.FormModule)
       },
       {
         path: 'tree',
-        loadChildren: './features/tree/tree.module#TreeModule'
+        loadChildren: () => import('./features/tree/tree.module').then(m => m.TreeModule)
       },
       {
         path: 'profile',
-        loadChildren: './features/profile/profile.module#ProfileModule'
+        loadChildren: () => import('./features/profile/profile.module').then(m => m.ProfileModule)
       },
       {
         path: 'result',
-        loadChildren: './features/result/result.module#ResultModule'
+        loadChildren: () => import('./features/result/result.module').then(m => m.ResultModule)
       },
       {
         path: 'exception',
-        loadChildren: './features/exception/exception.module#ExceptionModule'
+        loadChildren: () => import('./features/exception/exception.module').then(m => m.ExceptionModule)
       },
       {
         path: 'account',
-        loadChildren: './features/account/account.module#AccountModule'
+        loadChildren: () => import('./features/account/account.module').then(m => m.AccountModule)
       },
       {
         path: 'editor',
-        loadChildren: './features/editor/editor.module#EditorModule'
+        loadChildren: () => import('./features/editor/editor.module').then(m => m.EditorModule)
       },
       {
         path: 'code',
-        loadChildren: './features/code/code.module#CodeModule'
+        loadChildren: () => import('./features/code/code.module').then(m => m.CodeModule)
       },
     ]
   },

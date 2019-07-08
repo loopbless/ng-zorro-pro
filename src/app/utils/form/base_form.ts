@@ -29,7 +29,7 @@ export class NzoBaseForm {
    * @param form The form is a group of form instances
    * @return boolean the form status
    */
-  nzoFormValid(form: FormGroup = this.nzoForm): boolean {
+  valid(form: FormGroup = this.nzoForm): boolean {
     if (form.valid) {
       return true;
     }
@@ -45,11 +45,19 @@ export class NzoBaseForm {
     return validStatus;
   }
 
+  validKey(key: string, validKey?: string) {
+    const keyFormCtl = this.nzoForm.get(key);
+    if (!validKey) {
+      return keyFormCtl.valid;
+    }
+    return keyFormCtl.dirty && keyFormCtl.hasError(validKey);
+  }
+
   /**
    * Resets the form view status
    * @param form The form is a group of form instances
    */
-  nzoResetFormStatus(form: FormGroup = this.nzoForm) {
+  resetStatus(form: FormGroup = this.nzoForm) {
     const controls = form.controls;
     for (const i in controls) {
       if (controls.hasOwnProperty(i)) {
@@ -64,8 +72,8 @@ export class NzoBaseForm {
    * @param form The form is a group of form instances
    * @param value Initial value of form
    */
-  nzoResetForm(form: FormGroup = this.nzoForm, value?: any) {
-    this.nzoResetFormStatus(form);
+  reset(form: FormGroup = this.nzoForm, value?: any) {
+    this.resetStatus(form);
     form.reset(value);
   }
 }

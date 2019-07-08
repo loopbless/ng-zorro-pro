@@ -22,11 +22,11 @@ export class NzoBaseList {
   loadData(page?: NzoPagination) {
   }
 
-  onChangePageIndex(event) {
+  onPageIndex(event) {
     this.loadData(this.pagination);
   }
 
-  onChangePageSize(event) {
+  onPageSize(event) {
     this.loadData(this.pagination);
   }
 

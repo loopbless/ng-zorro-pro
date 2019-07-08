@@ -2,8 +2,8 @@
           [nzShowTotal]="totalTemplate"
           [nzTotal]="pageData.total" nzShowSizeChanger nzShowQuickJumper [nzLoading]="isLoading"
           [(nzPageIndex)]="pagination.number"
-          [(nzPageSize)]='pagination.limit' (nzPageIndexChange)="onChangePageIndex($event)"
-          (nzPageSizeChange)="onChangePageSize($event)">
+          [(nzPageSize)]='pagination.limit' (nzPageIndexChange)="onPageIndex($event)"
+          (nzPageSizeChange)="onPageSize($event)">
   <thead>
   <tr>
     <th *ngIf="nzoShowCheckbox" nzShowCheckbox [(nzChecked)]="nzoCheck.allChecked"

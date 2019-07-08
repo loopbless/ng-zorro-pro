@@ -13,9 +13,8 @@
   </nz-header>
 
   <ng-template [ngIf]="!setting.layoutMode || setting.layoutMode==='vertical'">
-    <nz-sider nzWidth="256" nzCollapsible
+    <nz-sider nzWidth="256px" nzCollapsible
       [(nzCollapsed)]="isCollapsed"
-      [nzReverseArrow]="true"
       [nzBreakpoint]="'lg'"
       (nzCollapsedChange)="onChangeCollapsed($event)">
       <nzo-navigation-bar

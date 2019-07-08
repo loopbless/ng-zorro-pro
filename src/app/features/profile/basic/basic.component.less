@@ -1,0 +1,31 @@
+@import "theme";
+@profile-item-height: 32px;
+.@{nzo-prefix}-profile-container{
+  .@{nzo-prefix}-profile-item{
+    line-height: @profile-item-height;
+    margin-bottom: @padding-xs;
+    .@{nzo-prefix}-profile-label{
+      display: inline-block;
+      text-align: right;
+      &:after{
+        content: ':';
+        margin-left: 4px;
+        margin-right: @padding-xs;
+      }
+    }
+    .@{nzo-prefix}-profile-value{
+      display: inline-block;
+    }
+  }
+}
+
+.@{nzo-prefix}-title-line {
+  font-size: 16px;
+  font-weight: 600;
+  display: block;
+  line-height: 20px;
+  padding-left: @padding-xs;
+  color: @heading-color;
+  margin-bottom: @padding-lg;
+  border-left: 5px solid @primary-color;
+}

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BasicLayoutComponent } from './basic-layout/basic-layout.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
-import { LayoutService } from './layout.service';
+import { nzoLayoutService } from './nzo-layout.service';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
@@ -29,7 +29,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     ScrollingModule
   ],
   providers: [
-    LayoutService
+    nzoLayoutService
   ]
 })
 export class LayoutModule {

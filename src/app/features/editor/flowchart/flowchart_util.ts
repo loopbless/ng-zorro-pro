@@ -30,21 +30,28 @@ export class FlowchartUtil {
     if (gradient >= 1) {
       return startColor;
     }
-    if ((this.isHex(startColor) || this.isRgbOrRgba(startColor)) &&
-      (this.isHex(endColor) || this.isRgbOrRgba(endColor))) {
+    if (
+      (this.isHex(startColor) || this.isRgbOrRgba(startColor)) &&
+      (this.isHex(endColor) || this.isRgbOrRgba(endColor))
+    ) {
       const color1 = this.hex2Rgba(startColor)
         .replace(/^rgba?\(([\,\s\d]+)\)$/, '$1')
         .split(',');
       const color2 = this.hex2Rgba(endColor)
         .replace(/^rgba?\(([\,\s\d]+)\)$/, '$1')
         .split(',');
-      const rColor = (parseInt(color2[0], 0) - parseInt(color1[0], 0)) *
-        (1 - gradient) + parseInt(color1[0], 0);
-      const gColor = (parseInt(color2[1], 0) - parseInt(color1[1], 0)) *
-        (1 - gradient) + parseInt(color1[1], 0);
-      const bColor = (parseInt(color2[2], 0) - parseInt(color1[2], 0)) *
-        (1 - gradient) + parseInt(color1[2], 0);
-      return `rgb(${Math.floor(rColor)},${Math.floor(gColor)},${Math.floor(bColor)})`;
+      const rColor =
+        (parseInt(color2[0], 0) - parseInt(color1[0], 0)) * (1 - gradient) +
+        parseInt(color1[0], 0);
+      const gColor =
+        (parseInt(color2[1], 0) - parseInt(color1[1], 0)) * (1 - gradient) +
+        parseInt(color1[1], 0);
+      const bColor =
+        (parseInt(color2[2], 0) - parseInt(color1[2], 0)) * (1 - gradient) +
+        parseInt(color1[2], 0);
+      return `rgb(${Math.floor(rColor)},${Math.floor(gColor)},${Math.floor(
+        bColor,
+      )})`;
     }
     return startColor;
   }

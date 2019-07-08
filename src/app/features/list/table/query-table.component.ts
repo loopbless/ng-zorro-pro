@@ -13,7 +13,7 @@ export class QueryTableComponent extends NzoBaseForm implements OnInit {
 
   isCollapse = true;
 
-  @ViewChild('fieldTmpl') fieldTmpl: TemplateRef<any>;
+  @ViewChild('fieldTmpl', { static: true }) fieldTmpl: TemplateRef<any>;
 
   fields: NzoPageField[];
 

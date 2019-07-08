@@ -3,8 +3,11 @@
     <span><nz-badge [nzCount]=" 5 "><i nz-icon type="bell"></i></nz-badge></span>
   </li>
   <li>
-    <nz-dropdown [nzOverlayStyle]="overlayStyle">
-      <span nz-dropdown><nz-avatar [nzSize]="'small'" [nzSrc]="user.avatar"></nz-avatar><span class="ant-pl-xs">hejialin</span></span>
+    <span nz-dropdown [nzDropdownMenu]="global" nzOverlayClassName="nzo-i18n-overlay">
+      <nz-avatar [nzSize]="'small'" [nzSrc]="user.avatar"></nz-avatar>
+      <span class="ant-pl-xs">hejialin</span>
+    </span>
+    <nz-dropdown-menu #global>
       <ul nz-menu>
         <li nz-menu-item>
           <i nz-icon type="user"></i>
@@ -20,15 +23,17 @@
           <span>退出登录</span>
         </li>
       </ul>
-    </nz-dropdown>
+    </nz-dropdown-menu>
   </li>
   <li>
-    <nz-dropdown [nzOverlayStyle]="overlayStyle" nzPlacement="bottomRight">
-      <span nz-dropdown><span><i nz-icon type="global"></i></span></span>
+    <span nz-dropdown [nzDropdownMenu]="i18n" nzOverlayClassName="nzo-i18n-overlay" nzPlacement="bottomRight">
+      <span><i nz-icon type="global"></i></span>
+    </span>
+    <nz-dropdown-menu #i18n>
       <ul nz-menu>
         <li nz-menu-item>🇨🇳简体中文</li>
         <li nz-menu-item>🇺🇸English</li>
       </ul>
-    </nz-dropdown>
+    </nz-dropdown-menu>
   </li>
 </ul>

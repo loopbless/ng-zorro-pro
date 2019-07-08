@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { LayoutService } from '../layout.service';
+import { nzoLayoutService } from '../nzo-layout.service';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { MenuApi } from '@apis/menu';
@@ -22,20 +22,21 @@ export class BasicLayoutComponent implements OnInit {
   isCollapsed = false;
   menus: any[];
   currentUrl: string;
-  @ViewChild('header') header: ElementRef;
+  @ViewChild('header', {static: false}) header: ElementRef;
 
   constructor(private menu: MenuApi,
               private router: Router,
               private cdr: ChangeDetectorRef,
-              private store: LayoutService) {
+              private layout: nzoLayoutService) {
     this.router.events.pipe(
       filter(event => (event instanceof NavigationEnd))
     ).subscribe((event: any) => {
       if (this.currentUrl !== event.url) {
         this.currentUrl = event.url;
       }
+      this.layout.setCurrentRouter(event.url);
     });
-    this.store.layoutChange(GLOBAL_LAYOUT_ID).subscribe(data => {
+    this.layout.layoutChange(GLOBAL_LAYOUT_ID).subscribe(data => {
       this.setting.layoutMode = data.mode || this.setting.layoutMode;
       this.isCollapsed = data.collapsed || this.isCollapsed;
     });
@@ -44,10 +45,11 @@ export class BasicLayoutComponent implements OnInit {
   ngOnInit() {
     this.menu.list().subscribe(data => {
       this.menus = data;
+      this.layout.cacheMenus(data);
     });
   }
 
   onChangeCollapsed(event: any) {
-    this.store.dispatch({collapsed: event, layoutId: GLOBAL_LAYOUT_ID});
+    this.layout.dispatch({collapsed: event, layoutId: GLOBAL_LAYOUT_ID});
   }
 }

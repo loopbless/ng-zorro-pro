@@ -1,4 +1,5 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
+import { nzoLayoutService } from '../../layout/nzo-layout.service';
 
 @Component({
   selector: 'nzo-page-header',
@@ -10,18 +11,20 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges, TemplateRef, ViewCh
 })
 export class PageHeaderComponent implements OnInit {
 
-  @Input()  @ViewChild('contentTmpl') content: TemplateRef<any>;
+  @Input() @ViewChild('contentTmpl', {static: true}) content: TemplateRef<any>;
 
-  @Input() breadcrumbs = [];
+  @Input() breadcrumbs: any[] = [];
 
   @Input() title: string;
 
   @Input() description: string;
 
-  constructor() {
+  constructor(private layout: nzoLayoutService) {
   }
 
   ngOnInit() {
+    this.breadcrumbs = this.layout.getBreadcrumbs();
+    console.log(this.breadcrumbs);
   }
 
 }

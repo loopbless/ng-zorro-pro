@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
-import { FCShape } from '../flowchart';
+import { FCGraph, FCShape } from '../flowchart';
 
 @Component({
   selector: 'nzo-flow',
@@ -8,79 +7,90 @@ import { FCShape } from '../flowchart';
   styleUrls: ['./flow.component.less']
 })
 export class FlowComponent implements OnInit {
-  html: string;
-  modals: any[];
+  graphs: FCGraph[];
 
-  private flowGraph: any;
-  graphs: any[];
-
-  constructor(private dom: DomSanitizer) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.graphs = [{
-      type: FCShape.rect,
-      text: '&#xe65e;开始',
-      width: 68,
-      height: 30,
-      color: '#1590ff',
-      x: 20
-    }, {
-      type: FCShape.rect,
-      text: '&#xe60d;结束',
-      width: 68,
-      height: 30,
-      color: '#1590ff',
-      x: 20,
-      y: 50
-    }, {
-      type: FCShape.rect,
-      text: '并行',
-      width: 68,
-      height: 30,
-      color: '#faad14',
-      x: 20,
-      y: 100
-    }, {
-      type: FCShape.rect,
-      text: '&#xe64c;聚合',
-      width: 68,
-      height: 30,
-      color: '#faad14',
-      x: 20,
-      y: 150
-    }, {
-      type: FCShape.rect,
-      text: '&#xe69c;接口',
-      width: 68,
-      height: 30,
-      color: '#b786ec',
-      x: 20,
-      y: 200
-    }, {
-      type: FCShape.rect,
-      text: '规则',
-      width: 68,
-      height: 30,
-      color: '#b786ec',
-      x: 20,
-      y: 250
-    }, {
-      type: FCShape.rect,
-      text: '&#xe64c;模型',
-      width: 68,
-      height: 30,
-      color: '#b786ec',
-      x: 20,
-      y: 300
-    }, {
-      type: FCShape.diamond,
-      text: '判断',
-      width: 68,
-      color: '#65ddd5',
-      x: 20,
-      y: 350
-    }];
+    this.graphs = [
+      {
+        type: FCShape.ellipse,
+        text: '开始',
+        width: 68,
+        height: 30,
+        style: {
+          color: '#1590ff',
+        },
+        params: {
+        },
+        x: 20,
+      },
+      {
+        type: FCShape.ellipse,
+        text: '结束',
+        width: 68,
+        height: 30,
+        style: {
+          color: '#1590ff',
+        },
+        params: {
+        },
+        x: 20,
+        y: 50,
+      },
+      {
+        type: FCShape.rect,
+        text: '数据',
+        width: 68,
+        height: 30,
+        style: {
+          color: '#65ddd5',
+        },
+        params: {
+        },
+        x: 20,
+        y: 100,
+      },
+      {
+        type: FCShape.rect,
+        text: '类型',
+        width: 68,
+        height: 30,
+        style: {
+          color: '#b786ec',
+        },
+        params: {
+        },
+        x: 20,
+        y: 150,
+      },
+      {
+        type: FCShape.rect,
+        text: '参数',
+        width: 68,
+        height: 30,
+        style: {
+          color: '#faad14',
+        },
+        params: {
+        },
+        x: 20,
+        y: 200,
+      },
+      {
+        type: FCShape.diamond,
+        text: '判断',
+        width: 68,
+        style: {
+          color: '#777',
+        },
+        params: {
+        },
+        x: 20,
+        y: 250,
+      },
+    ];
 
   }
 

@@ -1,8 +1,13 @@
 <header class="ant-page-header">
   <div class="nzo-page-header-container">
     <nz-breadcrumb>
-      <nz-breadcrumb-item>首页</nz-breadcrumb-item>
-      <nz-breadcrumb-item *ngFor="let breadcrumb of breadcrumbs">{{breadcrumb.title}}</nz-breadcrumb-item>
+      <nz-breadcrumb-item *ngFor="let breadcrumb of breadcrumbs;let i = index">
+        <a [href]="breadcrumb.router"
+           *ngIf="breadcrumb.router && i !== (breadcrumbs.length-1);else planeTmpl">{{breadcrumb.name}}</a>
+        <ng-template #planeTmpl>
+          {{breadcrumb.name}}
+        </ng-template>
+      </nz-breadcrumb-item>
     </nz-breadcrumb>
     <ng-container *ngTemplateOutlet="content"></ng-container>
   </div>
