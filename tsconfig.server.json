@@ -4,13 +4,13 @@
     "outDir": "./out-tsc/app-server",
     "baseUrl": ".",
     "paths": {
-      "@shared/*": ["app/shared/*"],
-      "@utils/*": ["app/utils/*"],
-      "@apis/*": ["app/core/apis/*.api.ts"],
-      "@environment": ["environments/environment.ts"]
+      "@shared/*": ["src/app/shared/*"],
+      "@utils/*": ["src/app/utils/*"],
+      "@apis/*": ["src/app/core/apis/*.api.ts"],
+      "@environment": ["src/environments/environment.ts"]
     }
   },
   "angularCompilerOptions": {
-    "entryModule": "app/app.server.module#AppServerModule"
+    "entryModule": "src/app/app.server.module#AppServerModule"
   }
 }
