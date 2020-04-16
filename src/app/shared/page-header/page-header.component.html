@@ -9,7 +9,7 @@
         </ng-template>
       </nz-breadcrumb-item>
     </nz-breadcrumb>
-    <ng-container *ngTemplateOutlet="content"></ng-container>
+    <ng-container *ngTemplateOutlet="content || contentTmpl"></ng-container>
   </div>
 </header>
 <ng-template #contentTmpl>

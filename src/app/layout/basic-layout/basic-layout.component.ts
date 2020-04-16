@@ -22,7 +22,7 @@ export class BasicLayoutComponent implements OnInit {
   isCollapsed = false;
   menus: any[];
   currentUrl: string;
-  @ViewChild('header', {static: false}) header: ElementRef;
+  @ViewChild('header') header: ElementRef;
 
   constructor(private menu: MenuApi,
               private router: Router,

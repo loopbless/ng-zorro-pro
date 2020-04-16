@@ -11,7 +11,7 @@ import { nzoLayoutService } from '../../layout/nzo-layout.service';
 })
 export class PageHeaderComponent implements OnInit {
 
-  @Input() @ViewChild('contentTmpl', {static: true}) content: TemplateRef<any>;
+  @Input() content: TemplateRef<any>;
 
   @Input() breadcrumbs: any[] = [];
 

@@ -8,7 +8,7 @@ import { PageContentComponent } from './page-content/page-content.component';
 import { PageHeaderComponent } from './page-header/page-header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PagePaginationComponent } from './page-pagination/page-pagination.component';
-import { NozFnValuePipe } from '@shared/pipes/fn-value.pipe';
+import { NozFnValuePipe } from './pipes/fn-value.pipe';
 
 const COMPONENTS = [
   PageLayoutComponent,

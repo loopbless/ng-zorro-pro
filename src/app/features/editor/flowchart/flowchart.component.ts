@@ -103,7 +103,7 @@ export class NzoFlowchartComponent implements OnInit, OnChanges, OnDestroy {
   contextPosition: any;
   clipboard: any;
   flow: any;
-  @ViewChild('rootCvs', {static: false}) rootCvs: ElementRef;
+  @ViewChild('rootCvs') rootCvs: ElementRef;
 
   @ViewChildren(CdkDrag) private cdkDrags: QueryList<CdkDrag>;
 

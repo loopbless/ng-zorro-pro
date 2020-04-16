@@ -1,128 +1,158 @@
+/**
+ * @license
+ * Copyright Alibaba.com All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://github.com/NG-ZORRO/ng-zorro-antd/blob/master/LICENSE
+ */
+
+import { MediaMatcher } from '@angular/cdk/layout';
+import { Platform } from '@angular/cdk/platform';
 import {
+  AfterContentInit,
   AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  ElementRef,
+  ContentChild,
   EventEmitter,
   Input,
   NgZone,
+  OnChanges,
   OnDestroy,
   OnInit,
   Output,
-  Renderer2,
+  SimpleChanges,
   TemplateRef,
-  ViewChild,
   ViewEncapsulation
 } from '@angular/core';
 
-import { MediaMatcher } from '@angular/cdk/layout';
-import { Platform } from '@angular/cdk/platform';
-import { fromEvent, Subject } from 'rxjs';
-import { auditTime, takeUntil } from 'rxjs/operators';
-
-export type NzBreakPoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
+import { InputBoolean, NzBreakpointKey, NzDomEventService, siderResponsiveMap, toCssPixel } from 'ng-zorro-antd/core';
+import { NzMenuDirective } from 'ng-zorro-antd/menu';
+import { merge, of, Subject } from 'rxjs';
+import { delay, finalize, takeUntil } from 'rxjs/operators';
 
 @Component({
-  selector: 'nzo-page-sider',
+  selector: 'nz-sider',
+  exportAs: 'nzoPageSider',
   preserveWhitespaces: false,
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './page-sider.component.html',
+  template: `
+    <div class="ant-layout-sider-children">
+      <ng-content></ng-content>
+    </div>
+    <div
+      *ngIf="nzCollapsible && nzTrigger !== null"
+      nz-sider-trigger
+      [matchBreakPoint]="matchBreakPoint"
+      [nzCollapsedWidth]="nzCollapsedWidth"
+      [nzCollapsed]="nzCollapsed"
+      [nzBreakpoint]="nzBreakpoint"
+      [nzReverseArrow]="nzReverseArrow"
+      [nzTrigger]="nzTrigger"
+      [nzZeroTrigger]="nzZeroTrigger"
+      [siderWidth]="widthSetting"
+      (click)="setCollapsed(!nzCollapsed)"
+    ></div>
+  `,
   host: {
-    class: 'nzo-sider-light',
-    '[class.ant-layout-sider-zero-width]': 'nzCollapsed && nzCollapsedWidth === 0',
+    '[class.ant-layout-sider]': 'true',
+    '[class.ant-layout-sider-zero-width]': `nzCollapsed && nzCollapsedWidth === 0`,
     '[class.ant-layout-sider-light]': `nzTheme === 'light'`,
-    '[class.ant-layout-sider-collapsed]': 'nzCollapsed',
+    '[class.ant-layout-sider-dark]': `nzTheme === 'dark'`,
+    '[class.ant-layout-sider-collapsed]': `nzCollapsed`,
     '[style.flex]': 'flexSetting',
-    '[style.max-width.px]': 'widthSetting',
-    '[style.min-width.px]': 'widthSetting',
-    '[style.width.px]': 'widthSetting'
+    '[style.maxWidth]': 'widthSetting',
+    '[style.minWidth]': 'widthSetting',
+    '[style.width]': 'widthSetting'
   }
 })
-export class PageSiderComponent implements OnInit, AfterViewInit, OnDestroy {
-  private below = false;
+export class PageSiderComponent implements OnInit, AfterViewInit, OnDestroy, OnChanges, AfterContentInit {
   private destroy$ = new Subject();
-  private dimensionMap = {
-    xs: '480px',
-    sm: '576px',
-    md: '768px',
-    lg: '992px',
-    xl: '1200px',
-    xxl: '1600px'
-  };
-  @Input() nzWidth = 200;
+  @ContentChild(NzMenuDirective) nzMenuDirective: NzMenuDirective | null = null;
+  @Output() readonly nzCollapsedChange = new EventEmitter();
+  @Input() nzWidth: string | number = 200;
   @Input() nzTheme: 'light' | 'dark' = 'dark';
   @Input() nzCollapsedWidth = 80;
-  @Input() nzBreakpoint: NzBreakPoint;
-  @Input() nzZeroTrigger: TemplateRef<void>;
-  @Input() @ViewChild('defaultTrigger', { static: true }) nzTrigger: TemplateRef<void>;
-  @Input() nzReverseArrow = false;
-  @Input() nzCollapsible = false;
-  @Input() nzCollapsed = false;
-  @Output() readonly nzCollapsedChange = new EventEmitter();
+  @Input() nzBreakpoint: NzBreakpointKey | null = null;
+  @Input() nzZeroTrigger: TemplateRef<void> | null = null;
+  @Input() nzTrigger: TemplateRef<void> | undefined | null = undefined;
+  @Input() @InputBoolean() nzReverseArrow = false;
+  @Input() @InputBoolean() nzCollapsible = false;
+  @Input() @InputBoolean() nzCollapsed = false;
+  matchBreakPoint = false;
+  flexSetting: string | null = null;
+  widthSetting: string | null = null;
 
-  get flexSetting(): string {
-    if (this.nzCollapsed) {
-      return `0 0 ${this.nzCollapsedWidth}px`;
-    } else {
-      return `0 0 ${this.nzWidth}px`;
-    }
+  updateStyleMap(): void {
+    this.widthSetting = this.nzCollapsed ? `${this.nzCollapsedWidth}px` : toCssPixel(this.nzWidth);
+    this.flexSetting = `0 0 ${this.widthSetting}`;
+    this.cdr.markForCheck();
   }
 
-  get widthSetting(): number {
-    if (this.nzCollapsed) {
-      return this.nzCollapsedWidth;
-    } else {
-      return this.nzWidth;
-    }
-  }
-
-  watchMatchMedia(): void {
+  updateBreakpointMatch(): void {
     if (this.nzBreakpoint) {
-      const matchBelow = this.mediaMatcher.matchMedia(`(max-width: ${this.dimensionMap[this.nzBreakpoint]})`).matches;
-      this.below = matchBelow;
-      this.nzCollapsed = matchBelow;
-      this.nzCollapsedChange.emit(matchBelow);
-      this.ngZone.run(() => {
-        this.cdr.markForCheck();
-      });
+      this.matchBreakPoint = this.mediaMatcher.matchMedia(siderResponsiveMap[this.nzBreakpoint]).matches;
+      this.setCollapsed(this.matchBreakPoint);
+      this.cdr.markForCheck();
     }
   }
 
-  toggleCollapse(): void {
-    this.nzCollapsed = !this.nzCollapsed;
-    this.nzCollapsedChange.emit(this.nzCollapsed);
+  updateMenuInlineCollapsed(): void {
+    if (this.nzMenuDirective && this.nzMenuDirective.nzMode === 'inline' && this.nzCollapsedWidth !== 0) {
+      this.nzMenuDirective.setInlineCollapsed(this.nzCollapsed);
+    }
   }
 
-  get isZeroTrigger(): boolean {
-    return this.nzCollapsible && this.nzTrigger && this.nzCollapsedWidth === 0 &&
-      ((this.nzBreakpoint && this.below) || (!this.nzBreakpoint));
+  setCollapsed(collapsed: boolean): void {
+    if (collapsed !== this.nzCollapsed) {
+      this.nzCollapsed = collapsed;
+      this.nzCollapsedChange.emit(collapsed);
+      this.updateMenuInlineCollapsed();
+      this.updateStyleMap();
+      this.cdr.markForCheck();
+    }
   }
 
-  get isSiderTrigger(): boolean {
-    return this.nzCollapsible && this.nzTrigger && this.nzCollapsedWidth !== 0;
-  }
-
-  constructor(private mediaMatcher: MediaMatcher,
-              private ngZone: NgZone,
-              private platform: Platform,
-              private cdr: ChangeDetectorRef,
-              renderer: Renderer2, elementRef: ElementRef) {
-    renderer.addClass(elementRef.nativeElement, 'ant-layout-sider');
-  }
+  constructor(
+    private mediaMatcher: MediaMatcher,
+    private platform: Platform,
+    private cdr: ChangeDetectorRef,
+    private ngZone: NgZone,
+    private nzDomEventService: NzDomEventService
+  ) {}
 
   ngOnInit(): void {
+    this.updateStyleMap();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    const { nzCollapsed, nzCollapsedWidth, nzWidth } = changes;
+    if (nzCollapsed || nzCollapsedWidth || nzWidth) {
+      this.updateStyleMap();
+    }
+    if (nzCollapsed) {
+      this.updateMenuInlineCollapsed();
+    }
+  }
+
+  ngAfterContentInit(): void {
+    this.updateMenuInlineCollapsed();
   }
 
   ngAfterViewInit(): void {
     if (this.platform.isBrowser) {
-      Promise.resolve().then(() => this.watchMatchMedia());
-      this.ngZone.runOutsideAngular(() => {
-        fromEvent(window, 'resize')
-          .pipe(auditTime(16), takeUntil(this.destroy$))
-          .subscribe(() => this.watchMatchMedia());
-      });
+      merge(
+        this.nzDomEventService.registerResizeListener().pipe(finalize(() => this.nzDomEventService.unregisterResizeListener())),
+        of(true).pipe(delay(0))
+      )
+        .pipe(takeUntil(this.destroy$))
+        .subscribe(() => {
+          this.ngZone.run(() => {
+            this.updateBreakpointMatch();
+          });
+        });
     }
   }
 
@@ -130,5 +160,4 @@ export class PageSiderComponent implements OnInit, AfterViewInit, OnDestroy {
     this.destroy$.next();
     this.destroy$.complete();
   }
-
 }
