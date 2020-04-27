@@ -16,8 +16,7 @@ export class TemplateFormComponent implements OnInit {
   html: string;
   data: any = {};
 
-  constructor(private api: CodeApi,
-              private compiler: Compiler) {
+  constructor(private api: CodeApi) {
   }
 
   ngOnInit() {

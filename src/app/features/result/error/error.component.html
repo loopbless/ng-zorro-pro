@@ -1,23 +1,24 @@
 <nzo-page-layout>
-  <nzo-page-header title=""></nzo-page-header>
   <nzo-page-content>
-    <nzo-result type="error" title="提交失败" description="请核对并修改以下信息后，再重新提交。" [actions]="actionsTmpl">
-      <h3>您提交的内容有如下错误：</h3>
-      <div>
-        <i class="error" nz-icon type="close-circle"></i>您的账户已被冻结
-        <a>立即解冻
-          <i nz-icon type="right"></i>
-        </a>
+    <nz-result nzStatus="error" nzTitle="提交失败" nzSubTitle="请核对并修改以下信息后，再重新提交。">
+      <div nz-result-extra>
+        <div class="nzo-result-content">
+          <h3>您提交的内容有如下错误：</h3>
+          <div class="results-item">
+            <i class="error" nz-icon nzType="close-circle"></i>您的账户已被冻结
+            <a>立即解冻
+              <i nz-icon nzType="right"></i>
+            </a>
+          </div>
+          <div class="results-item">
+            <i class="error" nz-icon nzType="close-circle"></i>您的账户还不具备申请资格
+            <a>立即升级
+              <i nz-icon nzType="right"></i>
+            </a>
+          </div>
+        </div>
+        <button class="ant-result-extra" nz-button [nzType]="'primary'">返回修改</button>
       </div>
-      <div>
-        <i class="error" nz-icon type="close-circle"></i>您的账户还不具备申请资格
-        <a>立即升级
-          <i nz-icon type="right"></i>
-        </a>
-      </div>
-    </nzo-result>
-    <ng-template #actionsTmpl>
-      <button nz-button [nzType]="'primary'">返回修改</button>
-    </ng-template>
+    </nz-result>
   </nzo-page-content>
 </nzo-page-layout>

@@ -29,8 +29,9 @@ export class BasicLayoutComponent implements OnInit {
               private cdr: ChangeDetectorRef,
               private layout: nzoLayoutService) {
     this.router.events.pipe(
-      filter(event => (event instanceof NavigationEnd))
+      filter(event => (event instanceof NavigationEnd)),
     ).subscribe((event: any) => {
+      event.url = event.url.replace(/^(.+)\?.+/, '$1');
       if (this.currentUrl !== event.url) {
         this.currentUrl = event.url;
       }

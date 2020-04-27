@@ -71,7 +71,7 @@
                 <button nz-button (click)="reset(formGroup1)">重 置</button>
                 <a (click)="isCollapse = !isCollapse">
                   {{isCollapse ? '展开' : '收起'}}
-                  <i nz-icon [type]="isCollapse ? 'down' : 'up'"></i>
+                  <i nz-icon [nzType]="isCollapse ? 'down' : 'up'"></i>
                 </a>
               </nz-form-control>
             </nz-form-item>
@@ -79,7 +79,7 @@
         </div>
       </form>
 
-      <button class="nzo-mb-md" nz-button nzType="primary"><i nz-icon type="plus"></i>新 建</button>
+      <button class="nzo-mb-md" nz-button nzType="primary"><i nz-icon nzType="plus"></i>新 建</button>
 
       <nz-alert class="nzo-mb-sm" nzType="info" [nzMessage]="nzMsg" nzShowIcon="true"></nz-alert>
       <ng-template #nzMsg>
@@ -152,7 +152,7 @@
                 <button nz-button (click)="reset(formGroup2)">重 置</button>
                 <a (click)="isCollapse = !isCollapse">
                   {{isCollapse ? '展开' : '收起'}}
-                  <i nz-icon [type]="isCollapse ? 'down' : 'up'"></i>
+                  <i nz-icon [nzType]="isCollapse ? 'down' : 'up'"></i>
                 </a>
               </nz-form-control>
             </nz-form-item>
@@ -160,7 +160,7 @@
         </div>
       </form>
 
-      <button class="nzo-mb-md" nz-button nzType="primary"><i nz-icon type="plus"></i>新 建</button>
+      <button class="nzo-mb-md" nz-button nzType="primary"><i nz-icon nzType="plus"></i>新 建</button>
 
       <nz-alert class="nzo-mb-sm" nzType="info" [nzMessage]="nzMsg" nzShowIcon="true"></nz-alert>
       <ng-template #nzMsg>

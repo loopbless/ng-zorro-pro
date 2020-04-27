@@ -37,7 +37,7 @@
     "compression": "^1.7.4",
     "core-js": "^2.5.4",
     "express": "^4.15.2",
-    "ng-zorro-antd": "^8.5.2",
+    "ng-zorro-antd": "^9.0.1",
     "rxjs": "~6.5.5",
     "tslib": "^1.10.0",
     "web-animations-js": "^2.3.2",

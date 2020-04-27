@@ -1,25 +1,25 @@
 <ul class="nzo-global-header nzo-global-header-{{theme}}">
   <li>
-    <span><nz-badge [nzCount]=" 5 "><i nz-icon type="bell"></i></nz-badge></span>
+    <span><nz-badge [nzCount]=" 5 "><i nz-icon nzType="bell"></i></nz-badge></span>
   </li>
   <li>
     <span nz-dropdown [nzDropdownMenu]="global" nzOverlayClassName="nzo-i18n-overlay">
       <nz-avatar [nzSize]="'small'" [nzSrc]="user.avatar"></nz-avatar>
-      <span class="ant-pl-xs">hejialin</span>
+      <span class="nzo-pl-xs">hejialin</span>
     </span>
     <nz-dropdown-menu #global>
       <ul nz-menu>
         <li nz-menu-item>
-          <i nz-icon type="user"></i>
+          <i nz-icon nzType="user"></i>
           <span>个人中心</span>
         </li>
         <li nz-menu-item>
-          <i nz-icon type="setting"></i>
+          <i nz-icon nzType="setting"></i>
           <span>个人设置</span>
         </li>
         <li nz-menu-divider></li>
         <li nz-menu-item>
-          <i nz-icon type="logout"></i>
+          <i nz-icon nzType="logout"></i>
           <span>退出登录</span>
         </li>
       </ul>
@@ -27,7 +27,7 @@
   </li>
   <li>
     <span nz-dropdown [nzDropdownMenu]="i18n" nzOverlayClassName="nzo-i18n-overlay" nzPlacement="bottomRight">
-      <span><i nz-icon type="global"></i></span>
+      <span><i nz-icon nzType="global"></i></span>
     </span>
     <nz-dropdown-menu #i18n>
       <ul nz-menu>

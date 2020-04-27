@@ -1,14 +1,4 @@
-<nz-drawer
-  nzWidth="300px"
-  [nzVisible]="visible"
-  nzPlacement="right"
-  nzTitle="整体风格设置"
-  (nzOnClose)="visible = false"
->
-  <div class="nzo-layout-setting"
-       (click)="visible=!visible">
-    <i nz-icon [type]="visible?'close':'setting'"></i>
-  </div>
+<nz-drawer nzWidth="300px" [nzVisible]="visible" nzPlacement="right" nzTitle="整体风格设置" (nzOnClose)="visible = false">
   <h3>主题色</h3>
   <section class="nzo-setting-item">
     <nzo-theme-color [selected]="'daybreak'"></nzo-theme-color>
@@ -17,11 +7,14 @@
   <section class="nzo-setting-item">
     <div (click)="changeNavMode('vertical')">
       <img src="https://gw.alipayobjects.com/zos/rmsportal/JopDzEhOqwOjeNTXkoje.svg" alt="">
-      <i nz-icon type="check" [hidden]="setting?.layoutMode!=='vertical'"></i>
+      <i nz-icon nzType="check" [hidden]="setting?.layoutMode!=='vertical'"></i>
     </div>
     <div (click)="changeNavMode('horizontal')">
       <img src="https://gw.alipayobjects.com/zos/rmsportal/KDNDBbriJhLwuqMoxcAr.svg" alt="">
-      <i nz-icon type="check" [hidden]="setting?.layoutMode!=='horizontal'"></i>
+      <i nz-icon nzType="check" [hidden]="setting?.layoutMode!=='horizontal'"></i>
     </div>
   </section>
+  <div class="nzo-layout-setting" (click)="visible=!visible">
+    <i nz-icon [nzType]="visible?'close':'setting'"></i>
+  </div>
 </nz-drawer>

@@ -1,5 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NzResultModule } from 'ng-zorro-antd/result';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzStepsModule } from 'ng-zorro-antd/steps';
+import { NzGridModule } from 'ng-zorro-antd/grid';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 
 import { ResultRoutingModule } from './result-routing.module';
 import { SuccessComponent } from './success/success.component';
@@ -12,7 +19,14 @@ import { ResultComponent } from './result/result.component';
   imports: [
     CommonModule,
     ResultRoutingModule,
-    SharedModule
+    SharedModule,
+    NzResultModule,
+    NzIconModule,
+    NzButtonModule,
+    NzMessageModule,
+    NzLayoutModule,
+    NzGridModule,
+    NzStepsModule,
   ]
 })
 export class ResultModule { }

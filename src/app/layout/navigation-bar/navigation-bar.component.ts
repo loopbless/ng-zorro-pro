@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NzDirectionVHIType } from 'ng-zorro-antd';
 import { Menu } from '../levels-menu/levels-menu.component';
+import { NzMenuModeType } from 'ng-zorro-antd/menu';
 
 @Component({
   selector: 'nzo-navigation-bar',
@@ -14,8 +14,7 @@ export class NavigationBarComponent implements OnInit {
   @Input() collapsed: boolean;
   @Input() selectedUrl: string;
   @Input() menus: Menu[];
-  @Input() mode: NzDirectionVHIType;
-
+  @Input() mode: NzMenuModeType;
   constructor(private router: Router) {
   }
 

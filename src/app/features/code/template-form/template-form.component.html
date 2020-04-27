@@ -5,7 +5,7 @@
   <ng-template #titleContent>
     <h2>创建模板</h2>
     <div class="nzo-code-header">
-      <p><i nz-icon type="setting" ></i> 配置模板、设置相关参数</p>
+      <p><i nz-icon nzType="setting" ></i> 配置模板、设置相关参数</p>
     </div>
   </ng-template>
   <nzo-page-content>
@@ -13,15 +13,13 @@
       <nz-tabset>
         <nz-tab *ngFor="let tab of tabs" [nzTitle]="titleTemplate">
           <ng-template #titleTemplate>
-            <i nz-icon [type]="tab.icon"></i>{{ tab.name }}
+            <i nz-icon [nzType]="tab.icon"></i>{{ tab.name }}
           </ng-template>
           <textarea nz-input [(ngModel)]="html">
 
           </textarea>
         </nz-tab>
       </nz-tabset>
-<!--      <iframe src="https://stackblitz.com/edit/ng-zorro-pro" frameborder="0" width="100%" height="100%"></iframe>-->
-      <div [htmlCompiler]="data.html"></div>
     </div>
   </nzo-page-content>
 </nzo-page-layout>

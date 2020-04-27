@@ -1,5 +1,5 @@
 <ul>
-  <li *ngFor="let color of colorList" [ngStyle]="{'background-color': color.color}" nz-tooltip [nzTitle]="color.key">
-    <i nz-icon type="check" *ngIf="color.key === selected"></i>
+  <li *ngFor="let color of colorList" [ngStyle]="{'background-color': color.color}" nz-tooltip [nzTooltipTitle]="color.key">
+    <i nz-icon nzType="check" *ngIf="color.key === selected"></i>
   </li>
 </ul>

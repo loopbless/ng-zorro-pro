@@ -46,13 +46,19 @@
   img{
     cursor: pointer;
   }
-  i[type=check]{
+  i[nztype=check]{
     position: absolute;
     left: 25px;
     top: 16px;
     color: @primary-color;
   }
-  div:last-child i[type=check]{
+  div:last-child i[nztype=check]{
     left: 20px;
+  }
+}
+
+::ng-deep {
+  .ant-drawer-content {
+    overflow: inherit;
   }
 }

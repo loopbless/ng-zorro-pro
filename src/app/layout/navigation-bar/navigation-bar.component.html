@@ -1,4 +1,4 @@
-<div class="logo" [ngClass]="{'logo-inline': mode==='inline'}">
+<div class="logo" [ngClass]="{'logo-inline': mode==='vertical'}">
   <a routerLink="/">
     <img
       src="https://camo.githubusercontent.com/9fc690426bf04fad984b5a71424ecafc02528f51/68747470733a2f2f696d672e616c6963646e2e636f6d2f7466732f544231544646614841766f4b31526a535a467758586369434658612d3130362d3132302e737667">
@@ -12,7 +12,7 @@
   [mode]="mode"
   [selected]="selectedUrl"
   [inlineCollapsed]="collapsed"
-  [class.nzo-menu]="mode==='inline'"
+  [class.nzo-menu]="mode==='vertical'"
 >
 </nzo-levels-menu>
 
